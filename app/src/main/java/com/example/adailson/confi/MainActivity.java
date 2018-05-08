@@ -16,4 +16,8 @@ public class MainActivity extends AppCompatActivity {
         Intent vrintention = new Intent(this, gastosActivity.class);
         startActivity(vrintention);
     }
+    public void visualizarGastos(View v){
+        Intent vrintention = new Intent(this, resumoActivity.class);
+        startActivity(vrintention);
+    }
 }
