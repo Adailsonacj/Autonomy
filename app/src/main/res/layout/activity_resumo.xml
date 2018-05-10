@@ -47,10 +47,15 @@
                 tools:layout_editor_absoluteY="159dp" />
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/verGasto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:textColor="@android:color/holo_red_light"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:typeface="monospace"
+                app:fontFamily="sans-serif-smallcaps" />
 
             <TextView
                 android:id="@+id/textView4"
@@ -65,7 +70,7 @@
                 tools:layout_editor_absoluteY="280dp" />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/verEconomia"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />

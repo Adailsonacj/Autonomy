@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class CamadaBanco extends SQLiteOpenHelper {
 
-    String[] scripCriaBanco = {"create table gastos (id integer primary key autoincrement, dia integer not null, mes integer not null, ano integer not null, descricao text not null, valor text not null);"};
+    String[] scripCriaBanco = {"create table gastos (id integer primary key autoincrement, dia integer not null, mes integer not null, ano integer not null, descricao text not null, valor real not null);"};
     //public final String apagaBancoSQL = "drop database if exists carro";
     public static Context context;
 

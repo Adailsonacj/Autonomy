@@ -5,10 +5,10 @@ public class Gasto {
     private int mes;
     private int ano;
     private String descricao;
-    private String valor;
+    private float valor;
     ;
 
-    public Gasto(int dia, int mes, int ano, String descricao, String valor){
+    public Gasto(int dia, int mes, int ano, String descricao, float valor){
         this.dia=dia;
         this.mes=mes;
         this.ano=ano;
@@ -48,11 +48,11 @@ public class Gasto {
         this.descricao = descricao;
     }
 
-    public String getValor() {
+    public float getValor() {
         return valor;
     }
 
-    public void setValor(String valor) {
+    public void setValor(float valor) {
         this.valor = valor;
     }
 }

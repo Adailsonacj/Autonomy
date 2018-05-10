@@ -53,7 +53,7 @@ public class gastosActivity extends AppCompatActivity {
     public void salvaGasto(View v){
         BancoController crud = new BancoController(getBaseContext(), "gasto",1);
         String descricao = inputDescricao.getText().toString();
-        String valor = inputValor.getText().toString();
+        float valor = Float.parseFloat(inputValor.getText().toString());
         crud.insereGasto(dia,mes,ano,descricao,valor);
     }
 }
