@@ -10,6 +10,7 @@ import com.example.adailson.confi.database.CamadaBanco;
 import com.example.adailson.confi.model.Gasto;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class BancoController {
 
@@ -50,12 +51,14 @@ public class BancoController {
     }
 
     public ArrayList getMeses() {
-        ArrayList meses = new ArrayList();
+        ArrayList<Integer> meses = new ArrayList();
         db = banco.getReadableDatabase();
         Cursor cursor = db.query("gastos", new String[]{"id", "dia", "mes", "ano", "descricao", "valor"}, null, null, null, null, null);
 
         while (cursor.moveToNext()) {
-            meses.add(cursor.getInt(2));
+            if (!meses.contains(cursor.getInt(2))) {
+                meses.add(cursor.getInt(2));
+            }
         }
         return meses;
     }

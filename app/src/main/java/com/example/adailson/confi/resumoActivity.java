@@ -2,12 +2,16 @@ package com.example.adailson.confi;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.adailson.confi.daos.BancoController;
+import com.example.adailson.confi.database.CamadaBanco;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,37 +19,44 @@ import java.util.List;
 public class resumoActivity extends AppCompatActivity {
     private TextView verGasto;
     private TextView verEconomia;
-    private Spinner spinner;
+    private Button btnProx;
+    private Button btnAnt;
+    private int[] Mes;
+    private int posicao = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resumo);
         BancoController crud = new BancoController(getBaseContext(), "gasto", 1);
-        crud.getGastos(5);
-        spinner = (Spinner) findViewById(R.id.spinner);
-        setContentView(R.layout.activity_resumo);
 
-        List<String> list = new ArrayList<String>();
-        list.add("list 1");
-        list.add("list 2");
-        list.add("list 3");
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, list);
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(dataAdapter);
+        verGasto = (TextView) findViewById(R.id.verGasto);
+        verEconomia = (TextView) findViewById(R.id.verEconomia);
+    }
 
+    public void mesProx(View v) {
+        BancoController crud = new BancoController(getBaseContext(), "gasto", 1);
+        if(posicao < getListaMes().length){
+            posicao += getListaMes().length - getListaMes().length +1;
+            //float ii = crud.getGastos(getListaMes()[posicao]);
+            verGasto.setText("R$" + getListaMes()[posicao]);
+            verEconomia.setText("Position: "+posicao);
+        }else{
+        }
+    }
 
+    public void mesAtn(View v) {
 
-    //ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, crud.getMeses());
-    //arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
-    //spinner.setAdapter(arrayAdapter);
-    verGasto =(TextView)
+    }
 
-    findViewById(R.id.verGasto);
-        verGasto.setText("R$"+crud.getGastos(6));
-    verEconomia =(TextView)
-
-    findViewById(R.id.verEconomia);
-        verEconomia.setText("R$"+crud.getMeses());
-}
+    public int[] getListaMes() {
+        BancoController crud = new BancoController(getBaseContext(), "gasto", 1);
+        ArrayList<Integer> listaMes = crud.getMeses();
+        int contador = listaMes.size();
+        Mes = new int[contador];
+        for (int i = 0; i < contador ; i++) {
+            Mes[i] = listaMes.get(i);
+        }
+        return Mes;
+    }
 }
