@@ -1,15 +1,19 @@
 package com.example.adailson.confi;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.adailson.confi.daos.BancoController;
+
+import java.text.DateFormat;
+import java.text.FieldPosition;
+import java.text.ParsePosition;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class gastosActivity extends AppCompatActivity {
 
@@ -17,10 +21,8 @@ public class gastosActivity extends AppCompatActivity {
     private EditText inputDate;
     private EditText inputDescricao;
     private EditText inputValor;
-    private int dia;
-    private int mes;
-    private int ano;
-    private Button salvar;
+    private String data;
+    private Button btnSalvar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +34,7 @@ public class gastosActivity extends AppCompatActivity {
         inputDate = (EditText) findViewById(R.id.inputDate);
         inputDescricao = (EditText) findViewById(R.id.inputDescricao);
         inputValor = (EditText) findViewById(R.id.inputValor);
-        salvar = (Button) findViewById(R.id.salvaButton);
+        btnSalvar = (Button) findViewById(R.id.salvaButton);
 
         // quando selecionado alguma data diferente da padrão
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
@@ -43,10 +45,11 @@ public class gastosActivity extends AppCompatActivity {
                 //intent.putExtra("dataLongMiliseconds",
                   //      (Long) calendarView.getDate());
                 //startActivity(intent);
-                mes = month;
-                ano = year;
-                dia = dayOfMonth;
-                inputDate.setText(""+dayOfMonth+"/"+month+"/"+year+"");
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+                Date date = new Date(year,month,dayOfMonth);
+
+                data = ""+dateFormat.format(date)+"";
+                inputDate.setText(""+dateFormat.format(year+month+dayOfMonth)+"");
             }
         });
     }
@@ -54,6 +57,6 @@ public class gastosActivity extends AppCompatActivity {
         BancoController crud = new BancoController(getBaseContext(), "gasto",1);
         String descricao = inputDescricao.getText().toString();
         float valor = Float.parseFloat(inputValor.getText().toString());
-        crud.insereGasto(dia,mes,ano,descricao,valor);
+        crud.insereGasto(data,descricao,valor);
     }
 }

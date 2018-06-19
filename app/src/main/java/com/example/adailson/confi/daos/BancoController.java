@@ -21,12 +21,10 @@ public class BancoController {
         banco = new CamadaBanco(context, name, version);
     }
 
-    public void insereGasto(int dia, int mes, int ano, String descricao, float valor) {
+    public void insereGasto(String data, String descricao, float valor) {
         db = banco.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("dia", dia);
-        contentValues.put("mes", mes);
-        contentValues.put("ano", ano);
+        contentValues.put("data", data);
         contentValues.put("descricao", descricao);
         contentValues.put("valor", valor);
 
@@ -51,13 +49,16 @@ public class BancoController {
     }
 
     public ArrayList getMeses() {
-        ArrayList<Integer> meses = new ArrayList();
+        ArrayList<String> meses = new ArrayList();
         db = banco.getReadableDatabase();
-        Cursor cursor = db.query("gastos", new String[]{"id", "dia", "mes", "ano", "descricao", "valor"}, null, null, null, null, null);
+        Cursor cursor = db.query("gastos", new String[]{"id", "data", "descricao", "valor"}, null, null, null, null, null);
 
         while (cursor.moveToNext()) {
-            if (!meses.contains(cursor.getInt(2))) {
-                meses.add(cursor.getInt(2));
+            for(int i=0; i < cursor.getString(1).length(); i++){
+
+            }
+            if (!meses.contains(cursor.getString(1))) {
+                meses.add(cursor.getString(1));
             }
         }
         return meses;
