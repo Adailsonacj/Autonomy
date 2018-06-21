@@ -29,6 +29,8 @@ public class BancoController {
         contentValues.put("data", data);
         contentValues.put("descricao", descricao);
         contentValues.put("valor", valor);
+        contentValues.put("pg", 0);
+
 
         db.insert("gastos", null, contentValues);
         Toast.makeText(CamadaBanco.context, "Gasto inserido", Toast.LENGTH_SHORT).show();

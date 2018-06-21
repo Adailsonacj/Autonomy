@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".gastosActivity" />
-        <activity android:name=".resumoActivity"></activity>
+        <activity android:name=".resumoActivity" />
     </application>
 
 </manifest>

@@ -4,11 +4,21 @@ public class Gasto {
     private String data;
     private String descricao;
     private float valor;
+    private int pg;
 
-    public Gasto(String data, String descricao, float valor) {
+    public Gasto(String data, String descricao, float valor, int pg) {
         this.data = data;
         this.descricao = descricao;
         this.valor = valor;
+        this.pg = pg;
+    }
+
+    public int getPg() {
+        return pg;
+    }
+
+    public void setPg(int pg) {
+        this.pg = pg;
     }
 
     public String getData() {
