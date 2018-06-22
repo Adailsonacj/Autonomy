@@ -16,7 +16,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class gastosActivity extends AppCompatActivity {
+public class ActivityAddDespesa extends AppCompatActivity {
 
     //Atributos
     private EditText inputDate;
@@ -43,7 +43,7 @@ public class gastosActivity extends AppCompatActivity {
 
             @Override
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
-                //Intent intent = new Intent(gastosActivity.this, MainActivity.class);
+                //Intent intent = new Intent(ActivityAddDespesa.this, MainActivity.class);
                 //intent.putExtra("dataLongMiliseconds",
                 //      (Long) calendarView.getDate());
                 //startActivity(intent);

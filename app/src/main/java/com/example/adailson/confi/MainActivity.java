@@ -12,12 +12,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-    public void gastos(View view){
-        Intent vrintention = new Intent(this, gastosActivity.class);
+
+    public void btnAdicionarDespesa(View view) {
+        Intent vrintention = new Intent(this, ActivityAddDespesa.class);
         startActivity(vrintention);
     }
-    public void visualizarGastos(View v){
-        Intent vrintention = new Intent(this, resumoActivity.class);
+
+    public void btnVisualizarGastos(View v) {
+        Intent vrintention = new Intent(this, ActivityDespesas.class);
         startActivity(vrintention);
     }
 }

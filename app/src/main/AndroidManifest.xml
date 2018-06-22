@@ -16,8 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".gastosActivity" />
+        <activity android:name=".ActivityAddDespesa" />
         <activity android:name=".resumoActivity" />
+        <activity android:name=".ActivityDespesas" />
     </application>
 
 </manifest>

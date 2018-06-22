@@ -7,12 +7,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.widget.Toast;
 
 import com.example.adailson.confi.database.CamadaBanco;
-import com.example.adailson.confi.model.Gasto;
+import com.example.adailson.confi.model.Despesa;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 
 public class BancoController {
 
@@ -33,18 +32,18 @@ public class BancoController {
 
 
         db.insert("gastos", null, contentValues);
-        Toast.makeText(CamadaBanco.context, "Gasto inserido", Toast.LENGTH_SHORT).show();
+        Toast.makeText(CamadaBanco.context, "Despesa inserido", Toast.LENGTH_SHORT).show();
     }
 
     public float getGastos(int mes) {
         float gasto = 0;
-        ArrayList<Gasto> gastos = new ArrayList<>();
+        ArrayList<Despesa> despesas = new ArrayList<>();
 
         db = banco.getReadableDatabase();
-        Cursor cursor = db.query("gastos", new String[]{"id", "dia", "mes", "ano", "descricao", "valor"}, null, null, null, null, null);
+        Cursor cursor = db.query("despesas", new String[]{"id", "dia", "mes", "ano", "descricao", "valor"}, null, null, null, null, null);
 
         while (cursor.moveToNext()) {
-            // gastos.add(new Gasto(cursor.getInt(0),cursor.getInt(1), cursor.getInt(2),cursor.getString(3),cursor.getFloat(4)));
+            // despesas.add(new Despesa(cursor.getInt(0),cursor.getInt(1), cursor.getInt(2),cursor.getString(3),cursor.getFloat(4)));
             if (cursor.getInt(2) == mes) {
                 gasto += cursor.getFloat(5);
             }
