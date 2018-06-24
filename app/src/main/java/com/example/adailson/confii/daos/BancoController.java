@@ -1,13 +1,12 @@
-package com.example.adailson.confi.daos;
+package com.example.adailson.confii.daos;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.widget.Toast;
-
-import com.example.adailson.confi.database.CamadaBanco;
-import com.example.adailson.confi.model.Despesa;
+import com.example.adailson.confii.database.CamadaBanco;
+import com.example.adailson.confii.model.Despesa;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

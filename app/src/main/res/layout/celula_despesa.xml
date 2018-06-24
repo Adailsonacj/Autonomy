@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="100dp"
     android:orientation="vertical"
-    tools:context=".ActivityDespesas">
+    tools:context=".Despesas">
 
     <TableLayout
         android:layout_width="match_parent"

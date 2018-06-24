@@ -1,4 +1,4 @@
-package com.example.adailson.confi.database;
+package com.example.adailson.confii.database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

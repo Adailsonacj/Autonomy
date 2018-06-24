@@ -1,4 +1,4 @@
-package com.example.adailson.confi.model;
+package com.example.adailson.confii.model;
 
 public class Despesa {
     private String data;

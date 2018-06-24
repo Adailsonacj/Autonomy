@@ -1,4 +1,4 @@
-package com.example.adailson.confi;
+package com.example.adailson.confii;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,16 +7,13 @@ import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.EditText;
 
-import com.example.adailson.confi.daos.BancoController;
+import com.example.adailson.confii.daos.BancoController;
 
-import java.text.DateFormat;
-import java.text.FieldPosition;
-import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class ActivityAddDespesa extends AppCompatActivity {
+public class AddDespesa extends AppCompatActivity {
 
     //Atributos
     private EditText inputDate;
@@ -28,7 +25,7 @@ public class ActivityAddDespesa extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_gastos);
+        setContentView(R.layout.activity_add_despesa);
 
         final CalendarView calendarView = (CalendarView) findViewById(R.id.calendarView);
 

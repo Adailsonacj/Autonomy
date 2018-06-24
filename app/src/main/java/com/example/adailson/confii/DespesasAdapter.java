@@ -1,21 +1,16 @@
-package com.example.adailson.confi;
+package com.example.adailson.confii;
 
 import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
-import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
-import com.example.adailson.confi.model.Despesa;
+import com.example.adailson.confii.model.Despesa;
 
 import java.util.ArrayList;
-
-import static com.example.adailson.confi.database.CamadaBanco.context;
-
 
 public class DespesasAdapter extends BaseAdapter {
 
@@ -49,7 +44,7 @@ public class DespesasAdapter extends BaseAdapter {
 
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            layout = inflater.inflate(R.layout.activity_celula_despesa, null);
+            layout = inflater.inflate(R.layout.celula_despesa, null);
         } else {
             layout = convertView;
         }
@@ -61,11 +56,8 @@ public class DespesasAdapter extends BaseAdapter {
         data.setText(despesa.getData());
 
         TextView valor = (TextView) layout.findViewById(R.id.twValor);
-        valor.setText(despesa.getData());
+        valor.setText("R$" +despesa.getValor());
 
-        if (position % 2 == 0) {
-            layout.setBackgroundColor(Color.YELLOW);
-        }
         return layout;
     }
 }

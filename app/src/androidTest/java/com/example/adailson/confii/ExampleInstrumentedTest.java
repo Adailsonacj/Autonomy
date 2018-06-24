@@ -1,4 +1,4 @@
-package com.example.adailson.confi;
+package com.example.adailson.confii;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.adailson.confi", appContext.getPackageName());
+        assertEquals("com.example.adailson.confii", appContext.getPackageName());
     }
 }

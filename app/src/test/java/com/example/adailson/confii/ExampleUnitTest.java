@@ -1,4 +1,4 @@
-package com.example.adailson.confi;
+package com.example.adailson.confii;
 
 import org.junit.Test;
 
