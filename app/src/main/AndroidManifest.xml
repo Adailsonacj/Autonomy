@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".AddDespesa" />
-        <activity android:name=".Despesas"></activity>
+        <activity android:name=".Despesas" />
+        <activity android:name=".Meses"></activity>
     </application>
 
 </manifest>

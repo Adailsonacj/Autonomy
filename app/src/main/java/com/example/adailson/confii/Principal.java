@@ -19,7 +19,7 @@ public class Principal extends AppCompatActivity {
     }
 
     public void btnVisualizarGastos(View v) {
-        Intent vrintention = new Intent(this, Despesas.class);
+        Intent vrintention = new Intent(this, Meses.class);
         startActivity(vrintention);
     }
 }
