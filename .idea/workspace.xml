@@ -15,11 +15,12 @@
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/adailson/confii/Despesas.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/adailson/confii/Despesas.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/adailson/confii/Meses.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/adailson/confii/Meses.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/adailson/confii/Principal.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/adailson/confii/Principal.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/celula_despesa.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/celula_despesa.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/adailson/confii/daos/BancoController.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/adailson/confii/daos/BancoController.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/adailson/confii/database/CamadaBanco.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/adailson/confii/database/CamadaBanco.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -81,34 +82,42 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Meses.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/adailson/confii/Meses.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="BancoController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/adailson/confii/daos/BancoController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="20" column="56" lean-forward="true" selection-start-line="20" selection-start-column="56" selection-end-line="20" selection-end-column="56" />
+            <state relative-caret-position="241">
+              <caret line="72" column="49" lean-forward="true" selection-start-line="72" selection-start-column="49" selection-end-line="72" selection-end-column="49" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MesAdapter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/adailson/confii/MesAdapter.java">
+      <file leaf-file-name="CamadaBanco.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/adailson/confii/database/CamadaBanco.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="50" column="22" lean-forward="true" selection-start-line="50" selection-start-column="22" selection-end-line="50" selection-end-column="22" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="102">
+              <caret line="8" column="51" lean-forward="false" selection-start-line="8" selection-start-column="45" selection-end-line="8" selection-end-column="51" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Meses.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/adailson/confii/Meses.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="19" column="38" lean-forward="false" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Principal.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/adailson/confii/Principal.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="19" column="35" lean-forward="false" selection-start-line="19" selection-start-column="35" selection-end-line="19" selection-end-column="35" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -2147,9 +2156,12 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/celula_meses.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/celula_despesa.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_meses.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/adailson/confii/Principal.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/adailson/confii/MesAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/adailson/confii/Despesas.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/adailson/confii/Principal.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/adailson/confii/database/CamadaBanco.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/adailson/confii/Meses.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/adailson/confii/daos/BancoController.java" />
       </list>
     </option>
   </component>
@@ -2199,6 +2211,13 @@
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="confii" type="cbb59c9e:AndroidPsiDirectoryNode" />
               <item name="daos" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="confii" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="confii" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="confii" type="1abcf292:AndroidViewProjectNode" />
@@ -2439,36 +2458,48 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/adailson/confii/Despesas.java</url>
-          <line>13</line>
-          <properties />
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/adailson/confii/Despesas.java</url>
-          <line>14</line>
-          <properties />
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/adailson/confii/Despesas.java</url>
-          <line>17</line>
+          <line>26</line>
           <properties />
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/adailson/confii/Despesas.java</url>
-          <line>19</line>
+          <line>28</line>
           <properties />
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/adailson/confii/Despesas.java</url>
-          <line>20</line>
+          <line>29</line>
           <properties />
           <option name="timeStamp" value="9" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/adailson/confii/Despesas.java</url>
+          <line>15</line>
+          <properties />
+          <option name="timeStamp" value="39" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/adailson/confii/Despesas.java</url>
+          <line>19</line>
+          <properties />
+          <option name="timeStamp" value="40" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/adailson/confii/daos/BancoController.java</url>
+          <line>58</line>
+          <properties />
+          <option name="timeStamp" value="48" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/adailson/confii/daos/BancoController.java</url>
+          <line>56</line>
+          <properties />
+          <option name="timeStamp" value="49" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="15" />
+      <option name="time" value="53" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -2525,14 +2556,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/adailson/confii/DespesasAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="20" column="31" lean-forward="false" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_despesas.xml">
       <provider selected="true" editor-type-id="android-designer2">
         <state />
@@ -2544,44 +2567,76 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/adailson/confii/Principal.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/adailson/confii/Despesas.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="17" column="35" lean-forward="false" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
+        <state relative-caret-position="34">
+          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/adailson/confii/Despesas.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/adailson/confii/DespesasAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+        <state relative-caret-position="255">
+          <caret line="51" column="78" lean-forward="false" selection-start-line="51" selection-start-column="78" selection-end-line="51" selection-end-column="78" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/adailson/confii/MesAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="50" column="22" lean-forward="true" selection-start-line="50" selection-start-column="22" selection-end-line="50" selection-end-column="22" />
+        <state relative-caret-position="85">
+          <caret line="36" column="13" lean-forward="true" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Android/Sdk/sources/android-27/android/app/ActivityThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="2775" column="0" lean-forward="false" selection-start-line="2775" selection-start-column="0" selection-end-line="2775" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Android/Sdk/sources/android-27/android/app/Activity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="7008" column="0" lean-forward="false" selection-start-line="7008" selection-start-column="0" selection-end-line="7008" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/adailson/confii/Principal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="19" column="35" lean-forward="false" selection-start-line="19" selection-start-column="35" selection-end-line="19" selection-end-column="35" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/adailson/confii/Meses.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+        <state relative-caret-position="187">
+          <caret line="19" column="38" lean-forward="false" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/adailson/confii/database/CamadaBanco.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="8" column="51" lean-forward="false" selection-start-line="8" selection-start-column="45" selection-end-line="8" selection-end-column="51" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/adailson/confii/daos/BancoController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="20" column="56" lean-forward="true" selection-start-line="20" selection-start-column="56" selection-end-line="20" selection-end-column="56" />
+        <state relative-caret-position="241">
+          <caret line="72" column="49" lean-forward="true" selection-start-line="72" selection-start-column="49" selection-end-line="72" selection-end-column="49" />
           <folding />
         </state>
       </provider>

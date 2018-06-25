@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.adailson.confii.model.Despesa;
+
 public class Principal extends AppCompatActivity {
 
     @Override

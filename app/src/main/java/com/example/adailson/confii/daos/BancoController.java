@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.widget.Toast;
+
 import com.example.adailson.confii.database.CamadaBanco;
 import com.example.adailson.confii.model.Despesa;
 
@@ -29,31 +30,31 @@ public class BancoController {
         contentValues.put("valor", valor);
         contentValues.put("pg", 0);
 
-
         db.insert("gastos", null, contentValues);
-        Toast.makeText(CamadaBanco.context, "Despesa inserido", Toast.LENGTH_SHORT).show();
+        Toast.makeText(CamadaBanco.context, "Despesa inserida", Toast.LENGTH_SHORT).show();
+
     }
 
-    public float getGastos(int mes) {
-        float gasto = 0;
+    public ArrayList<Despesa> getGastos(int mes) {
         ArrayList<Despesa> despesas = new ArrayList<>();
 
         db = banco.getReadableDatabase();
-        Cursor cursor = db.query("despesas", new String[]{"id", "dia", "mes", "ano", "descricao", "valor"}, null, null, null, null, null);
+        Cursor cursor = db.query("despesas", new String[]{"id", "data", "descricao", "valor", "pg"}, null, null, null, null, null);
 
         while (cursor.moveToNext()) {
             // despesas.add(new Despesa(cursor.getInt(0),cursor.getInt(1), cursor.getInt(2),cursor.getString(3),cursor.getFloat(4)));
             if (cursor.getInt(2) == mes) {
-                gasto += cursor.getFloat(5);
+                despesas.add(new Despesa(cursor.getString(1), cursor.getString(2), cursor.getFloat(3), cursor.getInt(4)));
             }
         }
-        return gasto;
+        return despesas;
     }
 
     public ArrayList getMeses() {
-        ArrayList<Integer> meses = new ArrayList();
+        ArrayList<String> meses = new ArrayList();
         db = banco.getReadableDatabase();
-        Cursor cursor = db.query("gastos", new String[]{"id", "data", "descricao", "valor"}, null, null, null, null, null);
+
+        Cursor cursor = db.query("gastos", new String[]{"id", "data", "descricao", "valor", "pg"}, null, null, null, null, null);
 
         while (cursor.moveToNext()) {
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -64,7 +65,46 @@ public class BancoController {
             String ano = dataFormatada[6] + "" + dataFormatada[7] + "" + dataFormatada[8] + "" + dataFormatada[9];
             c.set(Integer.parseInt(ano), Integer.parseInt(mes), Integer.parseInt(dia));
             if (!meses.contains(c.get(Calendar.MONTH))) {
-                meses.add(c.get(Calendar.MONTH));
+                String mesForm = null;
+
+                if (c.get(Calendar.MONTH) == 1) {
+                    mesForm = "Janeiro/" + c.get(Calendar.YEAR);
+                }
+                if (c.get(Calendar.MONTH) == 2) {
+                    mesForm = "Fevereiro/" + c.get(Calendar.YEAR);
+                }
+                if (c.get(Calendar.MONTH) == 3) {
+                    mesForm = "Março/" + c.get(Calendar.YEAR);
+                }
+                if (c.get(Calendar.MONTH) == 4) {
+                    mesForm = "Abril/" + c.get(Calendar.YEAR);
+                }
+                if (c.get(Calendar.MONTH) == 5) {
+                    mesForm = "Maio/" + c.get(Calendar.YEAR);
+                }
+                if (c.get(Calendar.MONTH) == 6) {
+                    mesForm = "Junho/" + c.get(Calendar.YEAR);
+                }
+                if (c.get(Calendar.MONTH) == 7) {
+                    mesForm = "Julho/" + c.get(Calendar.YEAR);
+                }
+                if (c.get(Calendar.MONTH) == 8) {
+                    mesForm = "Agosto/" + c.get(Calendar.YEAR);
+                }
+                if (c.get(Calendar.MONTH) == 9) {
+                    mesForm = "Setembbro/" + c.get(Calendar.YEAR);
+                }
+                if (c.get(Calendar.MONTH) == 10) {
+                    mesForm = "Outubro/" + c.get(Calendar.YEAR);
+                }
+                if (c.get(Calendar.MONTH) == 11) {
+                    mesForm = "Novembro/" + c.get(Calendar.YEAR);
+                }
+                if (c.get(Calendar.MONTH) == 12) {
+                    mesForm = "Dezembro/" + c.get(Calendar.YEAR);
+                }
+
+                meses.add(mesForm);
             }
         }
         return meses;
