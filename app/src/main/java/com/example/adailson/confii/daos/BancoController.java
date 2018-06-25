@@ -39,11 +39,18 @@ public class BancoController {
         ArrayList<Despesa> despesas = new ArrayList<>();
 
         db = banco.getReadableDatabase();
-        Cursor cursor = db.query("despesas", new String[]{"id", "data", "descricao", "valor", "pg"}, null, null, null, null, null);
+        Cursor cursor = db.query("gastos", new String[]{"id", "data", "descricao", "valor", "pg"}, null, null, null, null, null);
 
         while (cursor.moveToNext()) {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            char[] dataFormatada = cursor.getString(1).toCharArray();
+            Calendar c = Calendar.getInstance();
+            String dia = dataFormatada[0] + "" + dataFormatada[1];
+            String strMes = dataFormatada[3] + "" + dataFormatada[4];
+            String ano = dataFormatada[6] + "" + dataFormatada[7] + "" + dataFormatada[8] + "" + dataFormatada[9];
+            c.set(Integer.parseInt(ano), Integer.parseInt(strMes), Integer.parseInt(dia));
             // despesas.add(new Despesa(cursor.getInt(0),cursor.getInt(1), cursor.getInt(2),cursor.getString(3),cursor.getFloat(4)));
-            if (cursor.getInt(2) == mes) {
+            if (c.get(Calendar.MONTH) == mes) {
                 despesas.add(new Despesa(cursor.getString(1), cursor.getString(2), cursor.getFloat(3), cursor.getInt(4)));
             }
         }

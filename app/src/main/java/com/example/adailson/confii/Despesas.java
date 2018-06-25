@@ -13,15 +13,14 @@ public class Despesas extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        BancoController bd = new BancoController(getBaseContext(), "gasto", 1);
+        BancoController bd = new BancoController(getBaseContext(), "gasto",1);
 
+        //ArrayList<Despesa> lista = new ArrayList();
+        ArrayList<Despesa> lista = bd.getGastos(6);
 
-        ArrayList<Despesa> lista = new ArrayList();
-        //ArrayList<Despesa> lista = bd.getGastos(6);
-
-        for (int i = 0; i < 20; i++) {
-            lista.add(new Despesa("12/03/201" + i + "", "Descrição teste" + i + "", 1 + i, 53));
-        }
+        //for (int i = 0; i < 20; i++) {
+          //  lista.add(new Despesa("12/03/201" + i + "", "Descrição teste" + i + "", 1 + i, 53));
+        //}
 
 
         super.onCreate(savedInstanceState);
