@@ -31,7 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:background="@android:color/holo_blue_dark"
+        android:background="#0099cc"
         android:text="Fundos"
         android:textColor="@android:color/background_light"
         android:textStyle="bold" />
