@@ -88,14 +88,6 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
-                <CheckBox
-                    android:id="@+id/cbPG"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:focusable="true"
-                    android:onClick="cbPg"
-                    android:text="PG" />
             </LinearLayout>
 
         </TableRow>

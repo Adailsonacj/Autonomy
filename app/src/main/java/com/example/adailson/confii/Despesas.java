@@ -24,7 +24,7 @@ public class Despesas extends Activity {
         BancoController bd = new BancoController(getBaseContext(), "gasto", 1);
         Intent vrIntent = getIntent();
         Bundle dados = vrIntent.getExtras();
-        ArrayList<DespesaModel> lista = bd.getGastos(dados.getInt("numeroMes"));
+        ArrayList<DespesaModel> lista = bd.getGastos(dados.getInt("numeroMes"), dados.getInt("numeroAno"));
         final DespesasAdapter despesasAdapter = new DespesasAdapter(this, lista);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_despesas);

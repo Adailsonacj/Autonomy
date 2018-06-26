@@ -60,6 +60,9 @@ public class AddDespesa extends AppCompatActivity {
         String descricao = inputDescricao.getText().toString();
         float valor = Float.parseFloat(inputValor.getText().toString());
         DespesaModel despesa= new DespesaModel(dataStr, descricao, valor, 0);
-        crud.insereGasto(despesa);
+        if(!dataStr.equals("")){
+            crud.insereGasto(despesa);
+
+        }
     }
 }
