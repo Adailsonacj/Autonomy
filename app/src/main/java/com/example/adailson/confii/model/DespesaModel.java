@@ -1,12 +1,12 @@
 package com.example.adailson.confii.model;
 
-public class Despesa {
+public class DespesaModel {
     private String data;
     private String descricao;
     private float valor;
     private int pg;
 
-    public Despesa(String data, String descricao, float valor, int pg) {
+    public DespesaModel(String data, String descricao, float valor, int pg) {
         this.data = data;
         this.descricao = descricao;
         this.valor = valor;

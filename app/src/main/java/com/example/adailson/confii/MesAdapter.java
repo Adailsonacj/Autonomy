@@ -7,14 +7,16 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.example.adailson.confii.model.MesModel;
+
 import java.util.ArrayList;
 
 public class MesAdapter extends BaseAdapter {
 
     private Context context;
-    private ArrayList<String> lista;
+    private ArrayList<MesModel> lista;
 
-    public MesAdapter(Context context, ArrayList<String> lista) {
+    public MesAdapter(Context context, ArrayList<MesModel> lista) {
         this.context = context;
         this.lista = lista;
     }
@@ -25,8 +27,8 @@ public class MesAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int position) {
-        return null;
+    public MesModel getItem(int position) {
+        return lista.get(position);
     }
 
     @Override
@@ -36,7 +38,7 @@ public class MesAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        String mes = lista.get(position);
+        MesModel mes = lista.get(position);
         View layout;
 
         if (convertView == null) {
@@ -47,7 +49,7 @@ public class MesAdapter extends BaseAdapter {
         }
 
         TextView descricao = (TextView) layout.findViewById(R.id.twMesAno);
-        descricao.setText(mes);
+        descricao.setText(mes.getNome());
         return layout;
     }
 }

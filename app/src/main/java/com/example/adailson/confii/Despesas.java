@@ -1,11 +1,12 @@
 package com.example.adailson.confii;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ListView;
 
 import com.example.adailson.confii.daos.BancoController;
-import com.example.adailson.confii.model.Despesa;
+import com.example.adailson.confii.model.DespesaModel;
 
 import java.util.ArrayList;
 
@@ -16,7 +17,9 @@ public class Despesas extends Activity {
         BancoController bd = new BancoController(getBaseContext(), "gasto",1);
 
         //ArrayList<Despesa> lista = new ArrayList();
-        ArrayList<Despesa> lista = bd.getGastos(6);
+        Intent vrIntent = getIntent();
+        Bundle dados = vrIntent.getExtras();
+        ArrayList<DespesaModel> lista = bd.getGastos(dados.getInt("numeroMes"));
 
         //for (int i = 0; i < 20; i++) {
           //  lista.add(new Despesa("12/03/201" + i + "", "Descrição teste" + i + "", 1 + i, 53));

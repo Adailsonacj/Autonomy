@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.adailson.confii.model.Despesa;
 
 public class Principal extends AppCompatActivity {
 
@@ -21,7 +20,7 @@ public class Principal extends AppCompatActivity {
     }
 
     public void btnVisualizarGastos(View v) {
-        Intent vrintention = new Intent(this, Despesas.class);
+        Intent vrintention = new Intent(this, Meses.class);
         startActivity(vrintention);
     }
 }

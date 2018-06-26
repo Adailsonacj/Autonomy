@@ -7,7 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.widget.Toast;
 
 import com.example.adailson.confii.database.CamadaBanco;
-import com.example.adailson.confii.model.Despesa;
+import com.example.adailson.confii.model.DespesaModel;
+import com.example.adailson.confii.model.MesModel;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -35,8 +36,8 @@ public class BancoController {
 
     }
 
-    public ArrayList<Despesa> getGastos(int mes) {
-        ArrayList<Despesa> despesas = new ArrayList<>();
+    public ArrayList<DespesaModel> getGastos(int mes) {
+        ArrayList<DespesaModel> despesas = new ArrayList<>();
 
         db = banco.getReadableDatabase();
         Cursor cursor = db.query("gastos", new String[]{"id", "data", "descricao", "valor", "pg"}, null, null, null, null, null);
@@ -51,14 +52,15 @@ public class BancoController {
             c.set(Integer.parseInt(ano), Integer.parseInt(strMes), Integer.parseInt(dia));
             // despesas.add(new Despesa(cursor.getInt(0),cursor.getInt(1), cursor.getInt(2),cursor.getString(3),cursor.getFloat(4)));
             if (c.get(Calendar.MONTH) == mes) {
-                despesas.add(new Despesa(cursor.getString(1), cursor.getString(2), cursor.getFloat(3), cursor.getInt(4)));
+                despesas.add(new DespesaModel(cursor.getString(1), cursor.getString(2), cursor.getFloat(3), cursor.getInt(4)));
             }
         }
         return despesas;
     }
 
     public ArrayList getMeses() {
-        ArrayList<String> meses = new ArrayList();
+        ArrayList<MesModel> meses = new ArrayList();
+        ArrayList<Integer> validacao = new ArrayList();
         db = banco.getReadableDatabase();
 
         Cursor cursor = db.query("gastos", new String[]{"id", "data", "descricao", "valor", "pg"}, null, null, null, null, null);
@@ -71,9 +73,10 @@ public class BancoController {
             String mes = dataFormatada[3] + "" + dataFormatada[4];
             String ano = dataFormatada[6] + "" + dataFormatada[7] + "" + dataFormatada[8] + "" + dataFormatada[9];
             c.set(Integer.parseInt(ano), Integer.parseInt(mes), Integer.parseInt(dia));
-            if (!meses.contains(c.get(Calendar.MONTH))) {
-                String mesForm = null;
 
+                String mesForm = null;
+            if (!validacao.contains(c.get(Calendar.MONTH))) {
+                validacao.add(c.get(Calendar.MONTH));
                 if (c.get(Calendar.MONTH) == 1) {
                     mesForm = "Janeiro/" + c.get(Calendar.YEAR);
                 }
@@ -99,7 +102,7 @@ public class BancoController {
                     mesForm = "Agosto/" + c.get(Calendar.YEAR);
                 }
                 if (c.get(Calendar.MONTH) == 9) {
-                    mesForm = "Setembbro/" + c.get(Calendar.YEAR);
+                    mesForm = "Setembro/" + c.get(Calendar.YEAR);
                 }
                 if (c.get(Calendar.MONTH) == 10) {
                     mesForm = "Outubro/" + c.get(Calendar.YEAR);
@@ -111,7 +114,7 @@ public class BancoController {
                     mesForm = "Dezembro/" + c.get(Calendar.YEAR);
                 }
 
-                meses.add(mesForm);
+                meses.add(new MesModel(mesForm, c.get(Calendar.MONTH),c.get(Calendar.YEAR)));
             }
         }
         return meses;

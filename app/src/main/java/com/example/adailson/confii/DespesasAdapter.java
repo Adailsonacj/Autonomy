@@ -1,23 +1,22 @@
 package com.example.adailson.confii;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.example.adailson.confii.model.Despesa;
+import com.example.adailson.confii.model.DespesaModel;
 
 import java.util.ArrayList;
 
 public class DespesasAdapter extends BaseAdapter {
 
     private Context context;
-    private ArrayList<Despesa> lista;
+    private ArrayList<DespesaModel> lista;
 
-    public DespesasAdapter(Context context, ArrayList<Despesa> lista) {
+    public DespesasAdapter(Context context, ArrayList<DespesaModel> lista) {
         this.context = context;
         this.lista = lista;
     }
@@ -29,7 +28,7 @@ public class DespesasAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int position) {
-        return null;
+        return lista.get(position);
     }
 
     @Override
@@ -39,7 +38,7 @@ public class DespesasAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        Despesa despesa = lista.get(position);
+        DespesaModel despesa = lista.get(position);
         View layout;
 
         if (convertView == null) {
