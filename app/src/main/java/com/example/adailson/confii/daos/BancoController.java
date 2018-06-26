@@ -23,17 +23,16 @@ public class BancoController {
         banco = new CamadaBanco(context, name, version);
     }
 
-    public void insereGasto(String data, String descricao, float valor) {
+    public void insereGasto(DespesaModel despesa) {
         db = banco.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("data", data);
-        contentValues.put("descricao", descricao);
-        contentValues.put("valor", valor);
-        contentValues.put("pg", 0);
+        contentValues.put("data", despesa.getData());
+        contentValues.put("descricao", despesa.getDescricao());
+        contentValues.put("valor", despesa.getValor());
+        contentValues.put("pg", despesa.getPg());
 
         db.insert("gastos", null, contentValues);
         Toast.makeText(CamadaBanco.context, "Despesa inserida", Toast.LENGTH_SHORT).show();
-
     }
 
     public ArrayList<DespesaModel> getGastos(int mes) {
@@ -74,7 +73,7 @@ public class BancoController {
             String ano = dataFormatada[6] + "" + dataFormatada[7] + "" + dataFormatada[8] + "" + dataFormatada[9];
             c.set(Integer.parseInt(ano), Integer.parseInt(mes), Integer.parseInt(dia));
 
-                String mesForm = null;
+            String mesForm = null;
             if (!validacao.contains(c.get(Calendar.MONTH))) {
                 validacao.add(c.get(Calendar.MONTH));
                 if (c.get(Calendar.MONTH) == 1) {
@@ -114,7 +113,7 @@ public class BancoController {
                     mesForm = "Dezembro/" + c.get(Calendar.YEAR);
                 }
 
-                meses.add(new MesModel(mesForm, c.get(Calendar.MONTH),c.get(Calendar.YEAR)));
+                meses.add(new MesModel(mesForm, c.get(Calendar.MONTH), c.get(Calendar.YEAR)));
             }
         }
         return meses;

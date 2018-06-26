@@ -8,6 +8,7 @@ import android.widget.CalendarView;
 import android.widget.EditText;
 
 import com.example.adailson.confii.daos.BancoController;
+import com.example.adailson.confii.model.DespesaModel;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -58,6 +59,7 @@ public class AddDespesa extends AppCompatActivity {
         BancoController crud = new BancoController(getBaseContext(), "gasto", 1);
         String descricao = inputDescricao.getText().toString();
         float valor = Float.parseFloat(inputValor.getText().toString());
-        crud.insereGasto(dataStr, descricao, valor);
+        DespesaModel despesa= new DespesaModel(dataStr, descricao, valor, 0);
+        crud.insereGasto(despesa);
     }
 }

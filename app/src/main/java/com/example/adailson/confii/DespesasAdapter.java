@@ -27,7 +27,7 @@ public class DespesasAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int position) {
+    public DespesaModel getItem(int position) {
         return lista.get(position);
     }
 
@@ -55,7 +55,7 @@ public class DespesasAdapter extends BaseAdapter {
         data.setText(despesa.getData());
 
         TextView valor = (TextView) layout.findViewById(R.id.twValor);
-        valor.setText("R$" +despesa.getValor());
+        valor.setText("R$" + despesa.getValor());
 
         return layout;
     }
