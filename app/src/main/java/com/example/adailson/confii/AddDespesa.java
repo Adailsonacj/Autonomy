@@ -65,5 +65,6 @@ public class AddDespesa extends AppCompatActivity {
             Snackbar.make(v, "Despesa Inserida", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show();
         }
+        finish();
     }
 }

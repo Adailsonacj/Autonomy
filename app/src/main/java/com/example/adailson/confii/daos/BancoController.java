@@ -46,6 +46,7 @@ public class BancoController {
             String where;
             db = banco.getWritableDatabase();
             where = "id=" + despesa.getId() + "";
+            String desc = despesa.getDescricao();
             contentValues.put("descricao", despesa.getDescricao());
             contentValues.put("pg", despesa.getPg());
             db.update("gastos", contentValues, where, null);

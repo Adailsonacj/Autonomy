@@ -23,22 +23,25 @@ public class ResumoDespesa extends AppCompatActivity {
     Bundle vrDados = new Bundle();
     boolean checked;
     DespesaModel despesa;
+    String descricao;
+    EditText edDescricao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resumo_despesa);
 
-        EditText edDescricao = (EditText) findViewById(R.id.edDescricao);
+        edDescricao = (EditText) findViewById(R.id.edDescricao);
         EditText edData = (EditText) findViewById(R.id.edData);
         EditText edValor = (EditText) findViewById(R.id.edValor);
         Intent vrIntent = getIntent();
         Bundle dados = vrIntent.getExtras();
         int id = dados.getInt("id");
-        String descricao = dados.getString("descricao");
+        descricao = dados.getString("descricao");
         String data = dados.getString("data");
         float valor = dados.getFloat("valor");
-        despesa = new DespesaModel(id, data,descricao,valor,0);
+        despesa = new DespesaModel(id, data, descricao, valor, 0);
+
         edDescricao.setText(dados.getString("descricao"));
         edData.setText(dados.getString("data"));
         edValor.setText(dados.getFloat("valor") + "");
@@ -56,6 +59,8 @@ public class ResumoDespesa extends AppCompatActivity {
         }
         BancoController crud = new BancoController(getBaseContext(), "gasto", 1);
         //Método para editar Despesa.
+        descricao = edDescricao.getText().toString();
+        despesa.setDescricao(descricao);
         if (crud.atualizaDespesa(despesa) == true) {
             Snackbar.make(v, "Concluído!" + despesa.getPg(), Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show();
@@ -63,5 +68,6 @@ public class ResumoDespesa extends AppCompatActivity {
             Snackbar.make(v, "Houve um erro!", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show();
         }
+        finish();
     }
 }

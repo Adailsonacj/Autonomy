@@ -41,6 +41,7 @@ public class Despesas extends Activity {
                 vrDados.putFloat("valor", ixDespesa.getValor());
                 it.putExtras(vrDados);
                 startActivity(it);
+                finish();
             }
         });
     }
