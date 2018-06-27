@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.support.design.widget.Snackbar;
 import android.widget.Toast;
 
 import com.example.adailson.confii.database.CamadaBanco;
@@ -23,16 +24,36 @@ public class BancoController {
         banco = new CamadaBanco(context, name, version);
     }
 
-    public void insereGasto(DespesaModel despesa) {
-        db = banco.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("data", despesa.getData());
-        contentValues.put("descricao", despesa.getDescricao());
-        contentValues.put("valor", despesa.getValor());
-        contentValues.put("pg", despesa.getPg());
+    public boolean insereGasto(DespesaModel despesa) {
+        try {
+            db = banco.getWritableDatabase();
+            ContentValues contentValues = new ContentValues();
+            contentValues.put("data", despesa.getData());
+            contentValues.put("descricao", despesa.getDescricao());
+            contentValues.put("valor", despesa.getValor());
+            contentValues.put("pg", despesa.getPg());
+            db.insert("gastos", null, contentValues);
+            db.close();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
 
-        db.insert("gastos", null, contentValues);
-        Toast.makeText(CamadaBanco.context, "Despesa inserida", Toast.LENGTH_SHORT).show();
+    public boolean atualizaDespesa(DespesaModel despesa) {
+        try {
+            ContentValues contentValues = new ContentValues();
+            String where;
+            db = banco.getWritableDatabase();
+            where = "id=" + despesa.getId() + "";
+            contentValues.put("descricao", despesa.getDescricao());
+            contentValues.put("pg", despesa.getPg());
+            db.update("gastos", contentValues, where, null);
+            db.close();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     public ArrayList<DespesaModel> getGastos(int mes, int ano) {
@@ -51,9 +72,10 @@ public class BancoController {
             c.set(Integer.parseInt(strAno), Integer.parseInt(strMes), Integer.parseInt(strDia));
             // despesas.add(new Despesa(cursor.getInt(0),cursor.getInt(1), cursor.getInt(2),cursor.getString(3),cursor.getFloat(4)));
             if (c.get(Calendar.MONTH) == mes && c.get(Calendar.YEAR) == ano) {
-                despesas.add(new DespesaModel(cursor.getString(1), cursor.getString(2), cursor.getFloat(3), cursor.getInt(4)));
+                despesas.add(new DespesaModel(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getFloat(3), cursor.getInt(4)));
             }
         }
+        db.close();
         return despesas;
     }
 
@@ -116,6 +138,7 @@ public class BancoController {
                 meses.add(new MesModel(mesForm, c.get(Calendar.MONTH), c.get(Calendar.YEAR)));
             }
         }
+        db.close();
         return meses;
     }
 }

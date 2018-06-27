@@ -22,6 +22,7 @@ public class ResumoDespesa extends AppCompatActivity {
 
     Bundle vrDados = new Bundle();
     boolean checked;
+    DespesaModel despesa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,34 +34,34 @@ public class ResumoDespesa extends AppCompatActivity {
         EditText edValor = (EditText) findViewById(R.id.edValor);
         Intent vrIntent = getIntent();
         Bundle dados = vrIntent.getExtras();
+        int id = dados.getInt("id");
+        String descricao = dados.getString("descricao");
+        String data = dados.getString("data");
+        float valor = dados.getFloat("valor");
+        despesa = new DespesaModel(id, data,descricao,valor,0);
         edDescricao.setText(dados.getString("descricao"));
         edData.setText(dados.getString("data"));
         edValor.setText(dados.getFloat("valor") + "");
-
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.btnEditar);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
     }
 
     public void cbPg(View v) {
         checked = ((CheckBox) v).isChecked();
         if (checked == true) {
-            Toast.makeText(ResumoDespesa.this, "Clicado ", Toast.LENGTH_SHORT).show();
         }
     }
 
     public void btnEditar(View v) {
-        int pg = 0;
         if (checked == true) {
-            pg = 1;
+            despesa.setPg(1);
         }
         BancoController crud = new BancoController(getBaseContext(), "gasto", 1);
         //Método para editar Despesa.
+        if (crud.atualizaDespesa(despesa) == true) {
+            Snackbar.make(v, "Concluído!" + despesa.getPg(), Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show();
+        } else {
+            Snackbar.make(v, "Houve um erro!", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show();
+        }
     }
 }

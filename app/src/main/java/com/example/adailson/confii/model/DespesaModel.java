@@ -1,16 +1,26 @@
 package com.example.adailson.confii.model;
 
 public class DespesaModel {
+    private int id;
     private String data;
     private String descricao;
     private float valor;
     private int pg;
 
-    public DespesaModel(String data, String descricao, float valor, int pg) {
+    public DespesaModel(int id, String data, String descricao, float valor, int pg) {
+        this.id = id;
         this.data = data;
         this.descricao = descricao;
         this.valor = valor;
         this.pg = pg;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getPg() {

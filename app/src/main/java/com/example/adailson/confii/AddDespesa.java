@@ -1,5 +1,6 @@
 package com.example.adailson.confii;
 
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -49,7 +50,7 @@ public class AddDespesa extends AppCompatActivity {
                 Calendar calendar = Calendar.getInstance();
                 calendar.set(year, month, dayOfMonth);
                 Date data = calendar.getTime();
-                dataStr = ""+ dateFormat.format(data)+"";
+                dataStr = "" + dateFormat.format(data) + "";
                 inputDate.setText(dataStr);
             }
         });
@@ -59,10 +60,10 @@ public class AddDespesa extends AppCompatActivity {
         BancoController crud = new BancoController(getBaseContext(), "gasto", 1);
         String descricao = inputDescricao.getText().toString();
         float valor = Float.parseFloat(inputValor.getText().toString());
-        DespesaModel despesa= new DespesaModel(dataStr, descricao, valor, 0);
-        if(!dataStr.equals("")){
-            crud.insereGasto(despesa);
-
+        DespesaModel despesa = new DespesaModel(0, dataStr, descricao, valor, 0);
+        if (crud.insereGasto(despesa) == true) {
+            Snackbar.make(v, "Despesa Inserida", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show();
         }
     }
 }

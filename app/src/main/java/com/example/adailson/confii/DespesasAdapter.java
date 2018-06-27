@@ -56,7 +56,6 @@ public class DespesasAdapter extends BaseAdapter {
 
         TextView valor = (TextView) layout.findViewById(R.id.twValor);
         valor.setText("R$" + despesa.getValor());
-
         return layout;
     }
 }
