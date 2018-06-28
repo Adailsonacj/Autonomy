@@ -60,11 +60,17 @@ public class AddDespesa extends AppCompatActivity {
         BancoController crud = new BancoController(getBaseContext(), "gasto", 1);
         String descricao = inputDescricao.getText().toString();
         float valor = Float.parseFloat(inputValor.getText().toString());
-        DespesaModel despesa = new DespesaModel(0, dataStr, descricao, valor, 0);
-        if (crud.insereGasto(despesa) == true) {
-            Snackbar.make(v, "Despesa Inserida", Snackbar.LENGTH_LONG)
+        String lkkk = dataStr;
+        if (dataStr == null) {
+            Snackbar.make(v, "Escolha a data", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show();
+        } else {
+            DespesaModel despesa = new DespesaModel(0, dataStr, descricao, valor, 0);
+            if (crud.insereGasto(despesa) == true) {
+                Snackbar.make(v, "Despesa Inserida", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+            finish();
         }
-        finish();
     }
 }

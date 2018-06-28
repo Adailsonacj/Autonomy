@@ -39,6 +39,7 @@ public class Despesas extends Activity {
                 vrDados.putString("descricao", ixDespesa.getDescricao());
                 vrDados.putString("data", ixDespesa.getData());
                 vrDados.putFloat("valor", ixDespesa.getValor());
+                vrDados.putInt("pg", ixDespesa.getPg());
                 it.putExtras(vrDados);
                 startActivity(it);
                 finish();
