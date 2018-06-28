@@ -10,32 +10,30 @@ import android.widget.EditText;
 
 import com.example.adailson.confii.daos.BancoController;
 import com.example.adailson.confii.model.DespesaModel;
+import com.example.adailson.confii.model.FundoModel;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class AddDespesa extends AppCompatActivity {
+public class AddFundo extends AppCompatActivity {
 
-    //Atributos
+
     private EditText inputDate;
     private EditText inputDescricao;
     private EditText inputValor;
     private String dataStr;
-    private Button btnSalvar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_despesa);
+        setContentView(R.layout.activity_add_fundo);
 
         final CalendarView calendarView = (CalendarView) findViewById(R.id.calendarView);
 
         //Iniciando componentes
         inputDate = (EditText) findViewById(R.id.inputDate);
         inputDescricao = (EditText) findViewById(R.id.inputDescricao);
-        inputValor = (EditText) findViewById(R.id.inputValor);
-        btnSalvar = (Button) findViewById(R.id.salvaButton);
 
         // quando selecionado alguma data diferente da padrão
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
@@ -56,20 +54,23 @@ public class AddDespesa extends AppCompatActivity {
         });
     }
 
-    public void salvaGasto(View v) {
+    public void salvaButton(View v) {
         BancoController crud = new BancoController(getBaseContext(), "gasto", 1);
-        String descricao = inputDescricao.getText().toString();
-        float valor = Float.parseFloat(inputValor.getText().toString());
+        String nome = inputDescricao.getText().toString();
         if (dataStr == null) {
             Snackbar.make(v, "Escolha a data", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show();
         } else {
-            DespesaModel despesa = new DespesaModel(0, dataStr, descricao, valor, 0);
-            if (crud.insereGasto(despesa) == true) {
-                Snackbar.make(v, "Despesa Inserida", Snackbar.LENGTH_LONG)
+            FundoModel fundo = new FundoModel(nome, dataStr);
+            if (crud.insereFundo(fundo) == true) {
+                Snackbar.make(v, "Fundo Inserido", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }else{
+                Snackbar.make(v, "Ocorreu um erro", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
-            finish();
+            //finish();
         }
     }
+
 }

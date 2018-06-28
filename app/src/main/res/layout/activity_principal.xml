@@ -32,6 +32,7 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:background="#0099cc"
+        android:onClick="btnFundos"
         android:text="Fundos"
         android:textColor="@android:color/background_light"
         android:textStyle="bold" />

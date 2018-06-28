@@ -16,29 +16,67 @@ import java.util.ArrayList;
 public class Meses extends Activity {
 
     Bundle vrDados = new Bundle();
+    private int idBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         BancoController bd = new BancoController(getBaseContext(), "gasto", 1);
-        ArrayList<MesModel> meses = bd.getMeses();
-        final MesAdapter mesAdapter = new MesAdapter(this, meses);
+        Intent vrIntent = getIntent();
+        Bundle dados = vrIntent.getExtras();
+        idBtn = dados.getInt("idBtn");
+        if (idBtn == 1) {
+            ArrayList<MesModel> meses = bd.getMeses();
+            final MesAdapter mesAdapter = new MesAdapter(this, meses);
 
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_meses);
-        ListView listView = (ListView) findViewById(R.id.lvwMes);
-        listView.setAdapter(mesAdapter);
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_meses);
+            ListView listView = (ListView) findViewById(R.id.lvwMes);
+            listView.setAdapter(mesAdapter);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                MesModel ixMes = mesAdapter.getItem(i);
-                Toast.makeText(Meses.this, "Clicado " + ixMes.getNumeroMes(), Toast.LENGTH_SHORT).show();
-                Intent it = new Intent(Meses.this, Despesas.class);
-                vrDados.putString("nome", ixMes.getNome());
-                vrDados.putInt("numeroMes", ixMes.getNumeroMes());
-                vrDados.putInt("numeroAno", ixMes.getNumeroAno());
-                it.putExtras(vrDados);
-                startActivity(it);
-            }
-        });
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    MesModel ixMes = mesAdapter.getItem(i);
+                    Toast.makeText(Meses.this, "Clicado " + ixMes.getNumeroMes(), Toast.LENGTH_SHORT).show();
+                    Intent it = new Intent(Meses.this, Despesas.class);
+                    vrDados.putString("nome", ixMes.getNome());
+                    vrDados.putInt("numeroMes", ixMes.getNumeroMes());
+                    vrDados.putInt("numeroAno", ixMes.getNumeroAno());
+                    it.putExtras(vrDados);
+                    startActivity(it);
+                }
+            });
+        }
+        if (idBtn == 2) {
+            ArrayList<MesModel> meses = bd.getMesesFundos();
+            final MesAdapter mesAdapter = new MesAdapter(this, meses);
+
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_meses);
+            ListView listView = (ListView) findViewById(R.id.lvwMes);
+            listView.setAdapter(mesAdapter);
+
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    MesModel ixMes = mesAdapter.getItem(i);
+                    Toast.makeText(Meses.this, "Clicado " + ixMes.getNumeroMes(), Toast.LENGTH_SHORT).show();
+                    Intent it = new Intent(Meses.this, Despesas.class);
+                    vrDados.putString("nome", ixMes.getNome());
+                    vrDados.putInt("numeroMes", ixMes.getNumeroMes());
+                    vrDados.putInt("numeroAno", ixMes.getNumeroAno());
+                    it.putExtras(vrDados);
+                    startActivity(it);
+                }
+            });
+        }
+    }
+    public void btnAdd(View v){
+        if(idBtn == 1){
+            Intent vrintention = new Intent(this, AddDespesa.class);
+            startActivity(vrintention);
+        }
+        if(idBtn == 2){
+            Intent vrintention = new Intent(this, AddFundo.class);
+            startActivity(vrintention);
+        }
     }
 }

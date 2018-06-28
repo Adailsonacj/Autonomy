@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.example.adailson.confii.database.CamadaBanco;
 import com.example.adailson.confii.model.DespesaModel;
+import com.example.adailson.confii.model.FundoModel;
 import com.example.adailson.confii.model.MesModel;
 
 import java.text.SimpleDateFormat;
@@ -22,6 +23,84 @@ public class BancoController {
 
     public BancoController(Context context, String name, int version) {
         banco = new CamadaBanco(context, name, version);
+    }
+
+    public boolean insereFundo(FundoModel fundo) {
+        try {
+            db = banco.getWritableDatabase();
+            ContentValues contentValues = new ContentValues();
+            contentValues.put("data", fundo.getData());
+            contentValues.put("id", fundo.getId());
+            contentValues.put("nome", fundo.getNome());
+            db.insert("fundos", null, contentValues);
+            db.close();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public ArrayList getMesesFundos() {
+        ArrayList<MesModel> meses = new ArrayList();
+        ArrayList<Integer> validacao = new ArrayList();
+        db = banco.getReadableDatabase();
+
+        Cursor cursor = db.query("fundos", new String[]{"id", "data", "nome"}, null, null, null, null, null);
+
+        while (cursor.moveToNext()) {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            char[] dataFormatada = cursor.getString(1).toCharArray();
+            Calendar c = Calendar.getInstance();
+            String dia = dataFormatada[0] + "" + dataFormatada[1];
+            String mes = dataFormatada[3] + "" + dataFormatada[4];
+            String ano = dataFormatada[6] + "" + dataFormatada[7] + "" + dataFormatada[8] + "" + dataFormatada[9];
+            c.set(Integer.parseInt(ano), Integer.parseInt(mes), Integer.parseInt(dia));
+
+            String mesForm = null;
+            if (!validacao.contains(c.get(Calendar.MONTH))) {
+                validacao.add(c.get(Calendar.MONTH));
+                if (c.get(Calendar.MONTH) == 1) {
+                    mesForm = "Janeiro/" + c.get(Calendar.YEAR);
+                }
+                if (c.get(Calendar.MONTH) == 2) {
+                    mesForm = "Fevereiro/" + c.get(Calendar.YEAR);
+                }
+                if (c.get(Calendar.MONTH) == 3) {
+                    mesForm = "Março/" + c.get(Calendar.YEAR);
+                }
+                if (c.get(Calendar.MONTH) == 4) {
+                    mesForm = "Abril/" + c.get(Calendar.YEAR);
+                }
+                if (c.get(Calendar.MONTH) == 5) {
+                    mesForm = "Maio/" + c.get(Calendar.YEAR);
+                }
+                if (c.get(Calendar.MONTH) == 6) {
+                    mesForm = "Junho/" + c.get(Calendar.YEAR);
+                }
+                if (c.get(Calendar.MONTH) == 7) {
+                    mesForm = "Julho/" + c.get(Calendar.YEAR);
+                }
+                if (c.get(Calendar.MONTH) == 8) {
+                    mesForm = "Agosto/" + c.get(Calendar.YEAR);
+                }
+                if (c.get(Calendar.MONTH) == 9) {
+                    mesForm = "Setembro/" + c.get(Calendar.YEAR);
+                }
+                if (c.get(Calendar.MONTH) == 10) {
+                    mesForm = "Outubro/" + c.get(Calendar.YEAR);
+                }
+                if (c.get(Calendar.MONTH) == 11) {
+                    mesForm = "Novembro/" + c.get(Calendar.YEAR);
+                }
+                if (c.get(Calendar.MONTH) == 12) {
+                    mesForm = "Dezembro/" + c.get(Calendar.YEAR);
+                }
+
+                meses.add(new MesModel(mesForm, c.get(Calendar.MONTH), c.get(Calendar.YEAR)));
+            }
+        }
+        db.close();
+        return meses;
     }
 
     public boolean insereGasto(DespesaModel despesa) {

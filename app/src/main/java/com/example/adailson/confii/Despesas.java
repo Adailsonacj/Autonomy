@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.adailson.confii.daos.BancoController;
@@ -25,9 +26,13 @@ public class Despesas extends Activity {
         Intent vrIntent = getIntent();
         Bundle dados = vrIntent.getExtras();
         ArrayList<DespesaModel> lista = bd.getGastos(dados.getInt("numeroMes"), dados.getInt("numeroAno"));
+
+
         final DespesasAdapter despesasAdapter = new DespesasAdapter(this, lista);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_despesas);
+        TextView twMes = (TextView) findViewById(R.id.twMes);
+        twMes.setText(dados.getString("nome"));
         ListView listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(despesasAdapter);
 

@@ -52,7 +52,7 @@ public class ResumoDespesa extends AppCompatActivity {
         despesa = new DespesaModel(id, data, descricao, valor, 0);
         CheckBox cbPg = (CheckBox) findViewById(R.id.checkBox);
         TableRow rowPg = (TableRow) findViewById(R.id.rowPg);
-        if(pg == 1){
+        if (pg == 1) {
             rowPg.setBackgroundColor(Color.parseColor("#40E0D0"));
             cbPg.setChecked(true);
         }
