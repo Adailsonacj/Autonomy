@@ -19,50 +19,41 @@ import com.example.adailson.confii.model.MesModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Despesas extends Activity {
+public class Despesas extends Activity  implements AdapterView.OnItemSelectedListener  {
 
     Bundle vrDados = new Bundle();
+    BancoController bd;
+    ArrayList<DespesaModel> lista;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        BancoController bd = new BancoController(getBaseContext(), "gasto", 1);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_despesas);
+        bd = new BancoController(getBaseContext(), "gasto", 1);
         Intent vrIntent = getIntent();
         Bundle dados = vrIntent.getExtras();
-        ArrayList<DespesaModel> lista = bd.getGastos(dados.getInt("numeroMes"), dados.getInt("numeroAno"));
+        //Lista sendo preenchida com despesas do mês atual/ Parâmetros vindos da tela principal
+        carregaListView(dados.getInt("numeroMes"), dados.getInt("numeroAno"));
 
-
-        final DespesasAdapter despesasAdapter = new DespesasAdapter(this, lista);
-        super.onCreate(savedInstanceState);
-
-
-
-        // Spinner element
+        //Objeto Spinner, preenchendo e métodos de seleção
+        List<String> mesesNomes = new ArrayList();
+        for (int i = 0; i < bd.getMeses().size(); i++) {
+            mesesNomes.add(bd.getMeses().get(i).getNome());
+        }
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, mesesNomes);
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        spinner.setAdapter(arrayAdapter);
+        spinner.setOnItemSelectedListener(this);
 
-
-        // Spinner Drop down elements
-        List<String> categories = new ArrayList<String>();
-        categories.add("Automobile");
-        categories.add("Business Services");
-        categories.add("Computers");
-        categories.add("Education");
-        categories.add("Personal");
-        categories.add("Travel");
-
-        Spinner spn1 = (Spinner) findViewById(R.id.spinner);
-        //Cria um ArrayAdapter usando um padrão de layout da classe R do android, passando o ArrayList nomes
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, categories);
-        ArrayAdapter<String> spinnerArrayAdapter = arrayAdapter;
-        spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
-        spn1.setAdapter(spinnerArrayAdapter);
-
-
-
+        //Seta nome Mês selecionado direto no cabeçalho da tela Despesas
         TextView twMes = (TextView) findViewById(R.id.twMes);
         twMes.setText(dados.getString("nome"));
+
+        //ListView
+        final DespesasAdapter despesasAdapter = new DespesasAdapter(this, lista);
         ListView listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(despesasAdapter);
-
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 DespesaModel ixDespesa = despesasAdapter.getItem(i);
@@ -77,5 +68,26 @@ public class Despesas extends Activity {
                 finish();
             }
         });
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+
+        String nome = parent.getItemAtPosition(position).toString();
+        int numMes = bd.getMeses().get(position).getNumeroMes();
+        int numAno = bd.getMeses().get(position).getNumeroAno();
+        carregaListView(numMes, numAno);
+
+        Toast.makeText(Despesas.this, "Nome Selecionado: " + numMes +"/"+ numAno, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
+    public void carregaListView(int numMes, int numAno){
+        lista = bd.getGastos(numMes, numAno);
     }
 }

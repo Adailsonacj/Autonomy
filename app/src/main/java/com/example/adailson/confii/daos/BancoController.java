@@ -160,7 +160,7 @@ public class BancoController {
         return despesas;
     }
 
-    public ArrayList getMeses() {
+    public ArrayList<MesModel> getMeses() {
         ArrayList<MesModel> meses = new ArrayList();
         ArrayList<Integer> validacao = new ArrayList();
         db = banco.getReadableDatabase();
