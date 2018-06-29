@@ -17,13 +17,16 @@ import com.example.adailson.confii.model.DespesaModel;
 import com.example.adailson.confii.model.MesModel;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
-public class Despesas extends Activity  implements AdapterView.OnItemSelectedListener  {
+public class Despesas extends Activity implements AdapterView.OnItemSelectedListener {
 
     Bundle vrDados = new Bundle();
     BancoController bd;
     ArrayList<DespesaModel> lista;
+    DespesasAdapter despesasAdapter;
+    ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +36,7 @@ public class Despesas extends Activity  implements AdapterView.OnItemSelectedLis
         Intent vrIntent = getIntent();
         Bundle dados = vrIntent.getExtras();
         //Lista sendo preenchida com despesas do mês atual/ Parâmetros vindos da tela principal
-        carregaListView(dados.getInt("numeroMes"), dados.getInt("numeroAno"));
+        recarregarTela(0, 0);
 
         //Objeto Spinner, preenchendo e métodos de seleção
         List<String> mesesNomes = new ArrayList();
@@ -46,14 +49,8 @@ public class Despesas extends Activity  implements AdapterView.OnItemSelectedLis
         spinner.setAdapter(arrayAdapter);
         spinner.setOnItemSelectedListener(this);
 
-        //Seta nome Mês selecionado direto no cabeçalho da tela Despesas
-        TextView twMes = (TextView) findViewById(R.id.twMes);
-        twMes.setText(dados.getString("nome"));
 
         //ListView
-        final DespesasAdapter despesasAdapter = new DespesasAdapter(this, lista);
-        ListView listView = (ListView) findViewById(R.id.listView);
-        listView.setAdapter(despesasAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 DespesaModel ixDespesa = despesasAdapter.getItem(i);
@@ -70,24 +67,128 @@ public class Despesas extends Activity  implements AdapterView.OnItemSelectedLis
         });
     }
 
+    public void btnAddDespesa(View v) {
+        Intent vrintention = new Intent(this, AddDespesa.class);
+        startActivity(vrintention);
+        finish();
+    }
+
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
 
         String nome = parent.getItemAtPosition(position).toString();
         int numMes = bd.getMeses().get(position).getNumeroMes();
         int numAno = bd.getMeses().get(position).getNumeroAno();
-        carregaListView(numMes, numAno);
-
-        Toast.makeText(Despesas.this, "Nome Selecionado: " + numMes +"/"+ numAno, Toast.LENGTH_LONG).show();
+        recarregarTela(numMes, numAno);
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-
     }
 
-    public void carregaListView(int numMes, int numAno){
-        lista = bd.getGastos(numMes, numAno);
+    public void recarregarTela(int numMes, int numAno) {
+
+        Calendar c = Calendar.getInstance();
+        //Acrescendo o valor 1 por o "Mês" vem contando a partir de zero.
+        if (numMes == 0 && numAno == 0) {
+            numMes = c.get(Calendar.MONTH) + 1;
+            numAno = c.get(Calendar.YEAR);
+
+            String strMes = null;
+            if (numMes == 1) {
+                strMes = "Janeiro";
+            }
+            if (numMes == 2) {
+                strMes = "Fevereiro";
+            }
+            if (numMes == 3) {
+                strMes = "Março";
+            }
+            if (numMes == 4) {
+                strMes = "Abril";
+            }
+            if (numMes == 5) {
+                strMes = "Maio";
+            }
+            if (numMes == 6) {
+                strMes = "Junho";
+            }
+            if (numMes == 7) {
+                strMes = "Julho";
+            }
+            if (numMes == 8) {
+                strMes = "Agosto";
+            }
+            if (numMes == 9) {
+                strMes = "Setembro";
+            }
+            if (numMes == 10) {
+                strMes = "Outubro";
+            }
+            if (numMes == 11) {
+                strMes = "Novembro";
+            }
+            if (numMes == 12) {
+                strMes = "Dezembro";
+            }
+            //Seta nome Mês selecionado direto no cabeçalho da tela Despesas
+            TextView twMes = (TextView) findViewById(R.id.twMes);
+            twMes.setText(strMes);
+
+            //Recarrega ListView
+            lista = bd.getGastos(numMes, numAno);
+            int ii = lista.size();
+            despesasAdapter = new DespesasAdapter(this, lista);
+            listView = (ListView) findViewById(R.id.listView);
+            listView.setAdapter(despesasAdapter);
+        } else {
+
+            String strMes = null;
+            if (numMes == 1) {
+                strMes = "Janeiro";
+            }
+            if (numMes == 2) {
+                strMes = "Fevereiro";
+            }
+            if (numMes == 3) {
+                strMes = "Março";
+            }
+            if (numMes == 4) {
+                strMes = "Abril";
+            }
+            if (numMes == 5) {
+                strMes = "Maio";
+            }
+            if (numMes == 6) {
+                strMes = "Junho";
+            }
+            if (numMes == 7) {
+                strMes = "Julho";
+            }
+            if (numMes == 8) {
+                strMes = "Agosto";
+            }
+            if (numMes == 9) {
+                strMes = "Setembro";
+            }
+            if (numMes == 10) {
+                strMes = "Outubro";
+            }
+            if (numMes == 11) {
+                strMes = "Novembro";
+            }
+            if (numMes == 12) {
+                strMes = "Dezembro";
+            }
+            //Seta nome Mês selecionado direto no cabeçalho da tela Despesas
+            TextView twMes = (TextView) findViewById(R.id.twMes);
+            twMes.setText(strMes);
+
+            //Recarrega ListView
+            lista = bd.getGastos(numMes, numAno);
+            despesasAdapter = new DespesasAdapter(this, lista);
+            listView = (ListView) findViewById(R.id.listView);
+            listView.setAdapter(despesasAdapter);
+        }
     }
 }

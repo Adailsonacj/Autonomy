@@ -1,6 +1,7 @@
 package com.example.adailson.confii;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,6 +57,12 @@ public class DespesasAdapter extends BaseAdapter {
 
         TextView valor = (TextView) layout.findViewById(R.id.twValor);
         valor.setText("R$" + despesa.getValor());
+
+        if(despesa.getId() == 1){
+            layout.setBackgroundColor(Color.parseColor("#2EFE9A"));
+        }else{
+            layout.setBackgroundColor(Color.parseColor("#FA5882"));
+        }
         return layout;
     }
 }
