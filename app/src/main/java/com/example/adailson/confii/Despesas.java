@@ -5,8 +5,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,6 +17,7 @@ import com.example.adailson.confii.model.DespesaModel;
 import com.example.adailson.confii.model.MesModel;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Despesas extends Activity {
 
@@ -30,7 +33,31 @@ public class Despesas extends Activity {
 
         final DespesasAdapter despesasAdapter = new DespesasAdapter(this, lista);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_despesas);
+
+
+
+        // Spinner element
+        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+
+
+        // Spinner Drop down elements
+        List<String> categories = new ArrayList<String>();
+        categories.add("Automobile");
+        categories.add("Business Services");
+        categories.add("Computers");
+        categories.add("Education");
+        categories.add("Personal");
+        categories.add("Travel");
+
+        Spinner spn1 = (Spinner) findViewById(R.id.spinner);
+        //Cria um ArrayAdapter usando um padrão de layout da classe R do android, passando o ArrayList nomes
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, categories);
+        ArrayAdapter<String> spinnerArrayAdapter = arrayAdapter;
+        spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        spn1.setAdapter(spinnerArrayAdapter);
+
+
+
         TextView twMes = (TextView) findViewById(R.id.twMes);
         twMes.setText(dados.getString("nome"));
         ListView listView = (ListView) findViewById(R.id.listView);
