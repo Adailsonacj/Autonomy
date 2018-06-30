@@ -64,8 +64,9 @@
         android:id="@+id/btnAddDespesa"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="btnAddDespesa"
+        android:layout_margin="15dp"
         android:clickable="true"
+        android:onClick="btnAddDespesa"
         app:layout_anchor="@+id/constraintLayout"
         app:layout_anchorGravity="right|bottom"
         app:srcCompat="@android:drawable/ic_input_add" />

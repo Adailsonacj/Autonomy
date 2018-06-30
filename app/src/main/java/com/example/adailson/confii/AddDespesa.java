@@ -60,8 +60,9 @@ public class AddDespesa extends AppCompatActivity {
         BancoController crud = new BancoController(getBaseContext(), "gasto", 1);
         String descricao = inputDescricao.getText().toString();
         float valor = Float.parseFloat(inputValor.getText().toString());
-        if (dataStr == null) {
-            Snackbar.make(v, "Escolha a data", Snackbar.LENGTH_LONG)
+        String j = "";
+        if (dataStr == null || descricao == "" || valor == 0.0) {
+            Snackbar.make(v, "Preencha os campos corretamente!", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show();
         } else {
             DespesaModel despesa = new DespesaModel(0, dataStr, descricao, valor, 0);
