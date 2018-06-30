@@ -4,11 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
+    android:padding="10dp"
     tools:context=".Despesas">
 
+    <LinearLayout
+        android:id="@+id/coresSit"
+        android:layout_width="10dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    </LinearLayout>
+
     <TableLayout
-        android:layout_width="wrap_content"
+        android:layout_width="355dp"
         android:layout_height="wrap_content">
 
         <TableRow
@@ -19,23 +27,15 @@
                 android:id="@+id/imageView2"
                 android:layout_width="43dp"
                 android:layout_height="match_parent"
-                android:src="@android:drawable/radiobutton_on_background" />
+                android:src="@android:drawable/ic_dialog_info" />
 
             <TextView
                 android:id="@+id/twDescricao"
-                android:layout_width="196dp"
+                android:layout_width="244dp"
                 android:layout_height="37dp"
                 android:text="TextView"
                 android:textColor="@android:color/background_dark"
                 android:textSize="20sp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical">
-
-            </LinearLayout>
 
         </TableRow>
 
@@ -85,20 +85,13 @@
                 android:textColor="@android:color/background_dark"
                 android:textSize="18sp" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-            </LinearLayout>
-
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent">
+
+        </TableRow>
 
         <TableRow
             android:layout_width="match_parent"

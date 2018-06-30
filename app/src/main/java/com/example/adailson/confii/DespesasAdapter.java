@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.adailson.confii.model.DespesaModel;
@@ -58,11 +60,13 @@ public class DespesasAdapter extends BaseAdapter {
         TextView valor = (TextView) layout.findViewById(R.id.twValor);
         valor.setText("R$" + despesa.getValor());
 
-        if(despesa.getId() == 1){
-            layout.setBackgroundColor(Color.parseColor("#2EFE9A"));
+        LinearLayout linear = (LinearLayout) layout.findViewById(R.id.coresSit);
+        if(despesa.getPg() == 1){
+            linear.setBackgroundColor(Color.parseColor("#2EFE9A"));
         }else{
-            layout.setBackgroundColor(Color.parseColor("#FA5882"));
+            linear.setBackgroundColor(Color.parseColor("#FA5882"));
         }
+
         return layout;
     }
 }
