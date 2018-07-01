@@ -48,23 +48,21 @@ public class Fundos extends AppCompatActivity implements AdapterView.OnItemSelec
         spinner.setAdapter(arrayAdapter);
         spinner.setOnItemSelectedListener(this);
 
-        /*
-        //ListView
+        //Clique na célula
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 FundoModel ixFundo = fundosAdapter.getItem(i);
                 Intent it = new Intent(Fundos.this, ResumoDespesa.class);
                 vrDados.putInt("id", ixFundo.getId());
-                vrDados.putString("descricao", ixFundo.getDescricao());
+                vrDados.putString("descricao", ixFundo.getNome());
                 vrDados.putString("data", ixFundo.getData());
-                vrDados.putFloat("valor", ixFundo.getValor());
-                vrDados.putInt("pg", ixFundo.getPg());
+                vrDados.putFloat("valor", ixFundo.getValorEntra());
                 it.putExtras(vrDados);
                 startActivity(it);
                 finish();
             }
         });
-        */
+
     }
 
     public void btnAddFundo(View v) {
@@ -75,10 +73,9 @@ public class Fundos extends AppCompatActivity implements AdapterView.OnItemSelec
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
         String nome = parent.getItemAtPosition(position).toString();
-        int numMes = bd.getMeses().get(position).getNumeroMes();
-        int numAno = bd.getMeses().get(position).getNumeroAno();
+        int numMes = bd.getMesesFundos().get(position).getNumeroMes();
+        int numAno = bd.getMesesFundos().get(position).getNumeroAno();
         recarregarTela(numMes, numAno);
     }
 
@@ -131,9 +128,6 @@ public class Fundos extends AppCompatActivity implements AdapterView.OnItemSelec
             if (numMes == 12) {
                 strMes = "Dezembro";
             }
-            //Seta nome Mês selecionado direto no cabeçalho da tela Despesas
-            TextView twMes = (TextView) findViewById(R.id.twMes);
-            twMes.setText(strMes);
 
             //Recarrega ListView
             lista = bd.getFundos(numMes, numAno);
@@ -180,9 +174,6 @@ public class Fundos extends AppCompatActivity implements AdapterView.OnItemSelec
             if (numMes == 12) {
                 strMes = "Dezembro";
             }
-            //Seta nome Mês selecionado direto no cabeçalho da tela Despesas
-            TextView twMes = (TextView) findViewById(R.id.twMes);
-            twMes.setText(strMes);
 
             //Recarrega ListView
             lista = bd.getFundos(numMes, numAno);

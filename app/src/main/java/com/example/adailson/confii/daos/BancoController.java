@@ -30,7 +30,6 @@ public class BancoController {
             db = banco.getWritableDatabase();
             ContentValues contentValues = new ContentValues();
             contentValues.put("data", fundo.getData());
-            contentValues.put("id", fundo.getId());
             contentValues.put("nome", fundo.getNome());
             contentValues.put("valorEntra", fundo.getValorEntra());
             contentValues.put("valorRest", fundo.getValorEntra());
@@ -39,6 +38,7 @@ public class BancoController {
             db.close();
             return true;
         } catch (Exception e) {
+            db.close();
             return false;
         }
     }

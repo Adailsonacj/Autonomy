@@ -55,7 +55,7 @@ public class AddFundo extends AppCompatActivity {
         });
     }
 
-    public void salvaButton(View v) {
+    public void salvaFundo(View v) {
 
         BancoController crud = new BancoController(getBaseContext(), "gasto", 1);
         String descricao = inputDescricao.getText().toString();
@@ -64,7 +64,7 @@ public class AddFundo extends AppCompatActivity {
             Snackbar.make(v, "Escolha a data", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show();
         } else {
-            FundoModel fundo = new FundoModel(0, dataStr, descricao, valor, valor);
+            FundoModel fundo = new FundoModel(0, descricao, dataStr, valor, valor);
             if (crud.insereFundo(fundo) == true) {
                 Snackbar.make(v, "Fundo Inserido", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
