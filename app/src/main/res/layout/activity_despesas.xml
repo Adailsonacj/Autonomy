@@ -10,13 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="100dp">
 
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:dropDownWidth="match_parent"
-            android:entries="@android:color/background_light" />
-
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -34,12 +27,15 @@
                     android:textColor="@android:color/background_light"
                     android:textSize="30sp" />
 
-                <TextView
-                    android:id="@+id/twMes"
-                    android:layout_width="wrap_content"
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@android:color/background_light"
-                    android:textSize="30sp" />
+                    android:dropDownWidth="match_parent"
+                    android:entries="@android:color/background_light"
+                    android:spinnerMode="dialog"
+                    app:layout_scrollFlags="snap"
+                    tools:dropDownSelector="@android:color/background_light" />
 
             </TableRow>
 

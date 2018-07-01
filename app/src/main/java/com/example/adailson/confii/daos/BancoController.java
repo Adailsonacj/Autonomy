@@ -32,6 +32,9 @@ public class BancoController {
             contentValues.put("data", fundo.getData());
             contentValues.put("id", fundo.getId());
             contentValues.put("nome", fundo.getNome());
+            contentValues.put("valorEntra", fundo.getValorEntra());
+            contentValues.put("valorRest", fundo.getValorEntra());
+
             db.insert("fundos", null, contentValues);
             db.close();
             return true;
@@ -40,7 +43,7 @@ public class BancoController {
         }
     }
 
-    public ArrayList getMesesFundos() {
+    public ArrayList<MesModel> getMesesFundos() {
         ArrayList<MesModel> meses = new ArrayList();
         ArrayList<Integer> validacao = new ArrayList();
         db = banco.getReadableDatabase();
@@ -101,6 +104,34 @@ public class BancoController {
         }
         db.close();
         return meses;
+    }
+
+    public ArrayList<FundoModel> getFundos(int mes, int ano){
+        ArrayList<FundoModel> fundos = new ArrayList<>();
+        try {
+
+            db = banco.getReadableDatabase();
+            Cursor cursor = db.query("fundos", new String[]{"id", "data", "nome", "valorEntra", "valorRest"}, null, null, null, null, null);
+
+            while (cursor.moveToNext()) {
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                char[] dataFormatada = cursor.getString(1).toCharArray();
+                Calendar c = Calendar.getInstance();
+                String strDia = dataFormatada[0] + "" + dataFormatada[1];
+                String strMes = dataFormatada[3] + "" + dataFormatada[4];
+                String strAno = dataFormatada[6] + "" + dataFormatada[7] + "" + dataFormatada[8] + "" + dataFormatada[9];
+                c.set(Integer.parseInt(strAno), Integer.parseInt(strMes), Integer.parseInt(strDia));
+                // fundos.add(new Despesa(cursor.getInt(0),cursor.getInt(1), cursor.getInt(2),cursor.getString(3),cursor.getFloat(4)));
+                if (c.get(Calendar.MONTH) == mes && c.get(Calendar.YEAR) == ano) {
+                    fundos.add(new FundoModel(cursor.getInt(0), cursor.getString(2), cursor.getString(1), cursor.getFloat(3), cursor.getFloat(4)));
+                }
+            }
+            int ii = fundos.size();
+        }catch(Exception e){
+
+        }
+        db.close();
+        return fundos;
     }
 
     public boolean insereGasto(DespesaModel despesa) {

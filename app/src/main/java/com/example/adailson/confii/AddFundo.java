@@ -34,6 +34,7 @@ public class AddFundo extends AppCompatActivity {
         //Iniciando componentes
         inputDate = (EditText) findViewById(R.id.inputDate);
         inputDescricao = (EditText) findViewById(R.id.inputDescricao);
+        inputValor = (EditText) findViewById(R.id.inputValor);
 
         // quando selecionado alguma data diferente da padrão
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
@@ -55,13 +56,15 @@ public class AddFundo extends AppCompatActivity {
     }
 
     public void salvaButton(View v) {
+
         BancoController crud = new BancoController(getBaseContext(), "gasto", 1);
-        String nome = inputDescricao.getText().toString();
+        String descricao = inputDescricao.getText().toString();
+        float valor = Float.parseFloat(inputValor.getText().toString());
         if (dataStr == null) {
             Snackbar.make(v, "Escolha a data", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show();
         } else {
-            FundoModel fundo = new FundoModel(nome, dataStr);
+            FundoModel fundo = new FundoModel(0, dataStr, descricao, valor, valor);
             if (crud.insereFundo(fundo) == true) {
                 Snackbar.make(v, "Fundo Inserido", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();

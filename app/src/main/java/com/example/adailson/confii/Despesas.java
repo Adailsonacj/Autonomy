@@ -131,13 +131,8 @@ public class Despesas extends Activity implements AdapterView.OnItemSelectedList
             if (numMes == 12) {
                 strMes = "Dezembro";
             }
-            //Seta nome Mês selecionado direto no cabeçalho da tela Despesas
-            TextView twMes = (TextView) findViewById(R.id.twMes);
-            twMes.setText(strMes);
-
             //Recarrega ListView
             lista = bd.getGastos(numMes, numAno);
-            int ii = lista.size();
             despesasAdapter = new DespesasAdapter(this, lista);
             listView = (ListView) findViewById(R.id.listView);
             listView.setAdapter(despesasAdapter);
@@ -180,10 +175,6 @@ public class Despesas extends Activity implements AdapterView.OnItemSelectedList
             if (numMes == 12) {
                 strMes = "Dezembro";
             }
-            //Seta nome Mês selecionado direto no cabeçalho da tela Despesas
-            TextView twMes = (TextView) findViewById(R.id.twMes);
-            twMes.setText(strMes);
-
             //Recarrega ListView
             lista = bd.getGastos(numMes, numAno);
             despesasAdapter = new DespesasAdapter(this, lista);

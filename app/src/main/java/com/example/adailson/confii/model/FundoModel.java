@@ -4,10 +4,31 @@ public class FundoModel {
     private int id;
     private String nome;
     private String data;
+    private float valorEntra;
+    private float valorRest;
 
-    public FundoModel(String nome, String data) {
+    public FundoModel(int id,  String nome, String data, float valorEntra, float valorRest) {
+        this.id = id;
         this.nome = nome;
         this.data = data;
+        this.valorEntra = valorEntra;
+        this.valorRest = valorRest;
+    }
+
+    public float getValorEntra() {
+        return valorEntra;
+    }
+
+    public void setValorEntra(float valorEntra) {
+        this.valorEntra = valorEntra;
+    }
+
+    public float getValorRest() {
+        return valorRest;
+    }
+
+    public void setValorRest(float valorRest) {
+        this.valorRest = valorRest;
     }
 
     public String getNome() {

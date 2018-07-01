@@ -18,13 +18,8 @@ public class Principal extends AppCompatActivity {
         setContentView(R.layout.activity_principal);
     }
 
-    public void btnAdicionarDespesa(View view) {
-        Intent vrintention = new Intent(this, AddDespesa.class);
-        startActivity(vrintention);
-    }
-
     public void btnFundos(View v) {
-        Intent it = new Intent(Principal.this, Meses.class);
+        Intent it = new Intent(Principal.this, Fundos.class);
         vrDados.putInt("idBtn", 2);
         it.putExtras(vrDados);
         startActivity(it);

@@ -8,7 +8,7 @@ public class CamadaBanco extends SQLiteOpenHelper {
     //String[] scripCriaBanco = {"create table gastos (id integer primary key autoincrement, data text not null, descricao text not null, valor real not null,  pg integer not null);"};
 
     private static final String[] tabelaGastos = {"create table gastos (id integer primary key autoincrement, data text not null, descricao text not null, valor real not null, pg integer not null, idFundo integer);"};
-    private static final String[] tabelaFundos = {"create table fundos (id integer primary key autoincrement, data text not null, nome text not null);"};
+    private static final String[] tabelaFundos = {"create table fundos (id integer primary key autoincrement, data text not null, nome text not null, valorEntra real not null, valorRest real);"};
 
     public static Context context;
 
