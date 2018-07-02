@@ -60,6 +60,7 @@ public class Despesas extends Activity implements AdapterView.OnItemSelectedList
                 vrDados.putString("data", ixDespesa.getData());
                 vrDados.putFloat("valor", ixDespesa.getValor());
                 vrDados.putInt("pg", ixDespesa.getPg());
+                vrDados.putInt("idFundo", ixDespesa.getIdFundo());
                 it.putExtras(vrDados);
                 startActivity(it);
                 finish();

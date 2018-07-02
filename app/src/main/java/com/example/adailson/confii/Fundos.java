@@ -62,7 +62,6 @@ public class Fundos extends AppCompatActivity implements AdapterView.OnItemSelec
                 finish();
             }
         });
-
     }
 
     public void btnAddFundo(View v) {

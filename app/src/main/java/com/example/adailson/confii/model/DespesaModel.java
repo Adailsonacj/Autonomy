@@ -6,13 +6,23 @@ public class DespesaModel {
     private String descricao;
     private float valor;
     private int pg;
+    private int idFundo;
 
-    public DespesaModel(int id, String data, String descricao, float valor, int pg) {
+    public DespesaModel(int id, String data, String descricao, float valor, int pg, int idFundo) {
+        this.idFundo = idFundo;
         this.id = id;
         this.data = data;
         this.descricao = descricao;
         this.valor = valor;
         this.pg = pg;
+    }
+
+    public int getIdFundo() {
+        return idFundo;
+    }
+
+    public void setIdFundo(int idFundo) {
+        this.idFundo = idFundo;
     }
 
     public int getId() {

@@ -30,6 +30,7 @@ public class ResumoDespesa extends AppCompatActivity {
     private String data;
     private float valor;
     private int pg;
+    private int idFundo;
     EditText edDescricao;
     TextView twData;
     EditText edValor;
@@ -49,12 +50,14 @@ public class ResumoDespesa extends AppCompatActivity {
         data = dados.getString("data");
         valor = dados.getFloat("valor");
         pg = dados.getInt("pg");
-        despesa = new DespesaModel(id, data, descricao, valor, 0);
+        idFundo = dados.getInt("idFundo");
+        despesa = new DespesaModel(id, data, descricao, valor, 0, idFundo);
         CheckBox cbPg = (CheckBox) findViewById(R.id.checkBox);
         TableRow rowPg = (TableRow) findViewById(R.id.rowPg);
         if (pg == 1) {
             rowPg.setBackgroundColor(Color.parseColor("#A9F5E1"));
             cbPg.setChecked(true);
+            cbPg.setEnabled(false);
         }
         edDescricao.setText(dados.getString("descricao"));
         twData.setText(dados.getString("data"));
@@ -64,6 +67,9 @@ public class ResumoDespesa extends AppCompatActivity {
     public void cbPg(View v) {
         checked = ((CheckBox) v).isChecked();
         if (checked == true) {
+            BancoController crud = new BancoController(getBaseContext(), "gasto", 1);
+            float valorEntra = crud.getValorFundoId(idFundo);
+            crud.setValorRest(idFundo, valorEntra - valor);
         }
     }
 

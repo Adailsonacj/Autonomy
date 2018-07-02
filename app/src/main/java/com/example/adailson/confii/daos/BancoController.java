@@ -142,6 +142,7 @@ public class BancoController {
             contentValues.put("descricao", despesa.getDescricao());
             contentValues.put("valor", despesa.getValor());
             contentValues.put("pg", despesa.getPg());
+            contentValues.put("idFundo", despesa.getIdFundo());
             db.insert("gastos", null, contentValues);
             db.close();
             return true;
@@ -150,6 +151,42 @@ public class BancoController {
         }
     }
 
+    public float getValorFundoId(int id){
+
+        float fundo;
+        db = banco.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select valorEntra from fundos where id = "+id+"",null);
+        cursor.moveToFirst();
+        fundo = cursor.getFloat(cursor.getColumnIndex("valorEntra"));
+        db.close();
+        return fundo;
+    }
+
+    public float getValorRestFundoId(int id){
+
+        float fundo;
+        db = banco.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select valorRest from fundos where id = "+id+"",null);
+        cursor.moveToFirst();
+        fundo = cursor.getFloat(cursor.getColumnIndex("valorRest"));
+        db.close();
+        return fundo;
+    }
+
+    public boolean setValorRest(int idFundo, float valorRest){
+        try {
+            ContentValues contentValues = new ContentValues();
+            String where;
+            db = banco.getWritableDatabase();
+            where = "id=" + idFundo + "";
+            contentValues.put("valorRest", valorRest);
+            db.update("fundos", contentValues, where, null);
+            db.close();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
     public boolean atualizaDespesa(DespesaModel despesa) {
         try {
             ContentValues contentValues = new ContentValues();
@@ -172,7 +209,7 @@ public class BancoController {
         ArrayList<DespesaModel> despesas = new ArrayList<>();
 
         db = banco.getReadableDatabase();
-        Cursor cursor = db.query("gastos", new String[]{"id", "data", "descricao", "valor", "pg"}, null, null, null, null, null);
+        Cursor cursor = db.query("gastos", new String[]{"id", "data", "descricao", "valor", "pg", "idFundo"}, null, null, null, null, null);
 
         while (cursor.moveToNext()) {
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -184,7 +221,7 @@ public class BancoController {
             c.set(Integer.parseInt(strAno), Integer.parseInt(strMes), Integer.parseInt(strDia));
             // despesas.add(new Despesa(cursor.getInt(0),cursor.getInt(1), cursor.getInt(2),cursor.getString(3),cursor.getFloat(4)));
             if (c.get(Calendar.MONTH) == mes && c.get(Calendar.YEAR) == ano) {
-                despesas.add(new DespesaModel(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getFloat(3), cursor.getInt(4)));
+                despesas.add(new DespesaModel(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getFloat(3), cursor.getInt(4), cursor.getInt(5)));
             }
         }
         db.close();
