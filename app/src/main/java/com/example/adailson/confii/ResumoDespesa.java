@@ -28,7 +28,8 @@ public class ResumoDespesa extends AppCompatActivity {
     private DespesaModel despesa;
     private String descricao;
     private String data;
-    private float valor;
+    private float valorNovo;
+    private float valorAnt;
     private int pg;
     private int idFundo;
     EditText edDescricao;
@@ -48,10 +49,10 @@ public class ResumoDespesa extends AppCompatActivity {
         int id = dados.getInt("id");
         descricao = dados.getString("descricao");
         data = dados.getString("data");
-        valor = dados.getFloat("valor");
+        valorAnt = dados.getFloat("valor");
         pg = dados.getInt("pg");
         idFundo = dados.getInt("idFundo");
-        despesa = new DespesaModel(id, data, descricao, valor, 0, idFundo);
+        despesa = new DespesaModel(id, data, descricao, valorNovo, 0, idFundo);
         CheckBox cbPg = (CheckBox) findViewById(R.id.checkBox);
         TableRow rowPg = (TableRow) findViewById(R.id.rowPg);
         if (pg == 1) {
@@ -68,33 +69,37 @@ public class ResumoDespesa extends AppCompatActivity {
 
     public void cbPg(View v) {
         checked = ((CheckBox) v).isChecked();
-        if (checked == true) {
-            BancoController crud = new BancoController(getBaseContext(), "gasto", 1);
-            float valorRest = crud.getValorRestFundoId(idFundo);
-            crud.setValorRest(idFundo, valorRest - valor);
-        }
     }
 
     public void btnEditar(View v) {
-        valor = Float.parseFloat(edValor.getText().toString());
+        valorNovo = Float.parseFloat(edValor.getText().toString());
         if (pg == 0) {
             if (checked == true) {
                 despesa.setPg(1);
             }
             BancoController crud = new BancoController(getBaseContext(), "gasto", 1);
-            float valorAllRest = 0;
+            float allDespesasFundo = 0;
             for (int i = 0; i < crud.getAllDespesaFundo(idFundo).size(); i++) {
-                valorAllRest += crud.getAllDespesaFundo(idFundo).get(i).getValor();
+                allDespesasFundo += crud.getAllDespesaFundo(idFundo).get(i).getValor();
             }
             //variável que guarda o Valor restante de determinado fundo
             float valorTotalFundo = crud.getValorFundoId(idFundo);
             //verifica se o valor da nova despesa somado ao valor de todas as outras despesas relacionadas ao mesmo fundo
             //uçtrapassam ao valor restante do fundo.
-            if (valor + valorAllRest <= valorTotalFundo) {
+            if (valorNovo + allDespesasFundo - valorAnt<= valorTotalFundo) {
+
+
+                if (checked == true) {
+                    float valorRest = crud.getValorRestFundoId(idFundo);
+                    crud.setValorRest(idFundo, valorRest - valorNovo);
+                }
+
+
+
                 //Método para editar Despesa.
                 descricao = edDescricao.getText().toString();
                 despesa.setDescricao(descricao);
-                despesa.setValor(valor);
+                despesa.setValor(valorNovo);
                 if (crud.atualizaDespesa(despesa) == true) {
                     Snackbar.make(v, "Concluído!" + despesa.getPg(), Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
