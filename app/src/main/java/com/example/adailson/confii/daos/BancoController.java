@@ -4,8 +4,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.support.design.widget.Snackbar;
-import android.widget.Toast;
 
 import com.example.adailson.confii.database.CamadaBanco;
 import com.example.adailson.confii.model.DespesaModel;
@@ -106,7 +104,7 @@ public class BancoController {
         return meses;
     }
 
-    public ArrayList<FundoModel> getFundos(int mes, int ano){
+    public ArrayList<FundoModel> getFundos(int mes, int ano) {
         ArrayList<FundoModel> fundos = new ArrayList<>();
         try {
 
@@ -127,7 +125,7 @@ public class BancoController {
                 }
             }
             int ii = fundos.size();
-        }catch(Exception e){
+        } catch (Exception e) {
 
         }
         db.close();
@@ -151,29 +149,29 @@ public class BancoController {
         }
     }
 
-    public float getValorFundoId(int id){
+    public float getValorFundoId(int id) {
 
         float fundo;
         db = banco.getReadableDatabase();
-        Cursor cursor = db.rawQuery("select valorEntra from fundos where id = "+id+"",null);
+        Cursor cursor = db.rawQuery("select valorEntra from fundos where id = " + id + "", null);
         cursor.moveToFirst();
         fundo = cursor.getFloat(cursor.getColumnIndex("valorEntra"));
         db.close();
         return fundo;
     }
 
-    public float getValorRestFundoId(int id){
+    public float getValorRestFundoId(int id) {
 
         float fundo;
         db = banco.getReadableDatabase();
-        Cursor cursor = db.rawQuery("select valorRest from fundos where id = "+id+"",null);
+        Cursor cursor = db.rawQuery("select valorRest from fundos where id = " + id + "", null);
         cursor.moveToFirst();
         fundo = cursor.getFloat(cursor.getColumnIndex("valorRest"));
         db.close();
         return fundo;
     }
 
-    public boolean setValorRest(int idFundo, float valorRest){
+    public boolean setValorRest(int idFundo, float valorRest) {
         try {
             ContentValues contentValues = new ContentValues();
             String where;
@@ -187,6 +185,18 @@ public class BancoController {
             return false;
         }
     }
+
+    public ArrayList<DespesaModel> getAllDespesaFundo(int idFundo) {
+        ArrayList<DespesaModel> despesas = new ArrayList<>();
+        db = banco.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM gastos WHERE idFundo = " + idFundo + "", null);
+        while (cursor.moveToNext()) {
+            despesas.add(new DespesaModel(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getFloat(3), cursor.getInt(4), cursor.getInt(5)));
+        }
+        db.close();
+        return despesas;
+    }
+
     public boolean atualizaDespesa(DespesaModel despesa) {
         try {
             ContentValues contentValues = new ContentValues();

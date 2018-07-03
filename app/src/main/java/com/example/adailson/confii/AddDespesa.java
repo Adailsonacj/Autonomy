@@ -22,7 +22,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-public class AddDespesa extends AppCompatActivity implements AdapterView.OnItemSelectedListener  {
+public class AddDespesa extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     //Atributos
     private EditText inputDate;
@@ -90,12 +90,13 @@ public class AddDespesa extends AppCompatActivity implements AdapterView.OnItemS
                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
                 Calendar calendar = Calendar.getInstance();
                 calendar.set(year, month, dayOfMonth);
-                numMes = month+1; numAno=year;
-                if(carregaSpinner(month+1, year)==true) {
+                numMes = month + 1;
+                numAno = year;
+                if (carregaSpinner(month + 1, year) == true) {
                     Date data = calendar.getTime();
                     dataStr = "" + dateFormat.format(data) + "";
                     inputDate.setText(dataStr);
-                }else{
+                } else {
                     Intent it = new Intent(AddDespesa.this, Principal.class);
                     vrDados.putInt("semFundo", 1);
                     it.putExtras(vrDados);
@@ -111,40 +112,51 @@ public class AddDespesa extends AppCompatActivity implements AdapterView.OnItemS
         BancoController crud = new BancoController(getBaseContext(), "gasto", 1);
         String descricao = inputDescricao.getText().toString();
         float valor = Float.parseFloat(inputValor.getText().toString());
-        String j = "";
         if (dataStr == null || descricao == "" || valor == 0.0) {
             Snackbar.make(v, "Preencha os campos corretamente!", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show();
         } else {
+            //Valor de todas as despesas relacionadas a determinado fundo
+            float valorAllRest = 0;
+            for (int i = 0; i < crud.getAllDespesaFundo(idFundo).size(); i++) {
+                valorAllRest += crud.getAllDespesaFundo(idFundo).get(i).getValor();
+            }
+            //Criando despesa com valores inseridos por usuário
             DespesaModel despesa = new DespesaModel(0, dataStr, descricao, valor, 0, idFundo);
+            //variável que guarda o Valor restante de determinado fundo
             float valorRest = crud.getValorRestFundoId(idFundo);
-            if(valor <= valorRest) {
+            //verifica se o valor da nova despesa somado ao valor de todas as outras despesas relacionadas ao mesmo fundo
+            //uçtrapassam ao valor restante do fundo.
+            if (valor + valorAllRest <= valorRest) {
                 if (crud.insereGasto(despesa) == true) {
                     Snackbar.make(v, "Despesa Inserida", Snackbar.LENGTH_LONG).setAction("Action", null).show();
                     finish();
+                } else {
+                    Snackbar.make(v, "Houve um problema..", Snackbar.LENGTH_LONG).setAction("Action", null).show();
                 }
-            }else{
+            } else {
                 Snackbar.make(v, "O fundo selecionado não possui saldo sulficiente.", Snackbar.LENGTH_LONG).setAction("Action", null).show();
             }
         }
     }
-    public boolean carregaSpinner (int numMes, int numAno){
+
+    public boolean carregaSpinner(int numMes, int numAno) {
         BancoController bd = new BancoController(getBaseContext(), "gasto", 1);
 
         //Objeto Spinner, preenchendo e métodos de seleção
         List<String> listStrFundos = new ArrayList();
         ListIdFundo = new ArrayList<>();
 
-        for (int i = 0; i < bd.getFundos(numMes,numAno).size(); i++) {
-            ListIdFundo.add(bd.getFundos(numMes,numAno).get(i).getId());
-            listStrFundos.add(bd.getFundos(numMes,numAno).get(i).getNome());
+        for (int i = 0; i < bd.getFundos(numMes, numAno).size(); i++) {
+            ListIdFundo.add(bd.getFundos(numMes, numAno).get(i).getId());
+            listStrFundos.add(bd.getFundos(numMes, numAno).get(i).getNome());
         }
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, listStrFundos);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         spinnerFundo.setAdapter(arrayAdapter);
-        if(listStrFundos.size() >= 1){
+        if (listStrFundos.size() >= 1) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
@@ -155,5 +167,6 @@ public class AddDespesa extends AppCompatActivity implements AdapterView.OnItemS
     }
 
     @Override
-    public void onNothingSelected(AdapterView<?> parent) {}
+    public void onNothingSelected(AdapterView<?> parent) {
+    }
 }
