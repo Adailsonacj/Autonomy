@@ -55,6 +55,8 @@ public class ResumoDespesa extends AppCompatActivity {
         CheckBox cbPg = (CheckBox) findViewById(R.id.checkBox);
         TableRow rowPg = (TableRow) findViewById(R.id.rowPg);
         if (pg == 1) {
+            edDescricao.setEnabled(false);
+            edValor.setEnabled(false);
             rowPg.setBackgroundColor(Color.parseColor("#A9F5E1"));
             cbPg.setChecked(true);
             cbPg.setEnabled(false);
@@ -74,22 +76,36 @@ public class ResumoDespesa extends AppCompatActivity {
     }
 
     public void btnEditar(View v) {
-        if (checked == true) {
-            despesa.setPg(1);
-        }
-        BancoController crud = new BancoController(getBaseContext(), "gasto", 1);
-        //Método para editar Despesa.
-        descricao = edDescricao.getText().toString();
         valor = Float.parseFloat(edValor.getText().toString());
-        despesa.setDescricao(descricao);
-        despesa.setValor(valor);
-        if (crud.atualizaDespesa(despesa) == true) {
-            Snackbar.make(v, "Concluído!" + despesa.getPg(), Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show();
-        } else {
-            Snackbar.make(v, "Houve um erro!", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show();
+        if (pg == 0) {
+            if (checked == true) {
+                despesa.setPg(1);
+            }
+            BancoController crud = new BancoController(getBaseContext(), "gasto", 1);
+            float valorAllRest = 0;
+            for (int i = 0; i < crud.getAllDespesaFundo(idFundo).size(); i++) {
+                valorAllRest += crud.getAllDespesaFundo(idFundo).get(i).getValor();
+            }
+            //variável que guarda o Valor restante de determinado fundo
+            float valorTotalFundo = crud.getValorFundoId(idFundo);
+            //verifica se o valor da nova despesa somado ao valor de todas as outras despesas relacionadas ao mesmo fundo
+            //uçtrapassam ao valor restante do fundo.
+            if (valor + valorAllRest <= valorTotalFundo) {
+                //Método para editar Despesa.
+                descricao = edDescricao.getText().toString();
+                despesa.setDescricao(descricao);
+                despesa.setValor(valor);
+                if (crud.atualizaDespesa(despesa) == true) {
+                    Snackbar.make(v, "Concluído!" + despesa.getPg(), Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                } else {
+                    Snackbar.make(v, "Houve um erro!", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                }
+                finish();
+            } else {
+                Snackbar.make(v, "O fundo não possui saldo sulficiente.", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+            }
         }
-        finish();
     }
 }

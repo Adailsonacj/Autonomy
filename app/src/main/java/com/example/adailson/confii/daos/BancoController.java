@@ -206,6 +206,7 @@ public class BancoController {
             String desc = despesa.getDescricao();
             contentValues.put("descricao", despesa.getDescricao());
             contentValues.put("pg", despesa.getPg());
+            contentValues.put("valor", despesa.getValor());
             db.update("gastos", contentValues, where, null);
             db.close();
             return true;
