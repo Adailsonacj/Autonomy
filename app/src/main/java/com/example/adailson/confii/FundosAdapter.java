@@ -6,10 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
 import com.example.adailson.confii.model.FundoModel;
+
 import java.util.ArrayList;
 
-public class FundosAdapter extends BaseAdapter{
+public class FundosAdapter extends BaseAdapter {
 
     private Context context;
     private ArrayList<FundoModel> lista;
@@ -38,7 +40,6 @@ public class FundosAdapter extends BaseAdapter{
     public View getView(int position, View convertView, ViewGroup parent) {
         FundoModel fundo = lista.get(position);
         View layout;
-
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             layout = inflater.inflate(R.layout.celula_fundos, null);
@@ -53,10 +54,10 @@ public class FundosAdapter extends BaseAdapter{
         mes.setText(fundo.getData());
 
         TextView valor = (TextView) layout.findViewById(R.id.twValorEntra);
-        valor.setText("R$"+fundo.getValorEntra());
+        valor.setText("R$" + fundo.getValorEntra());
 
         TextView valorRest = (TextView) layout.findViewById(R.id.twValorRest);
-        valorRest.setText("R$"+fundo.getValorRest());
+        valorRest.setText("R$" + fundo.getValorRest());
 
         return layout;
     }

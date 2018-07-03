@@ -88,23 +88,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/textView4"
+                <ImageView
+                    android:id="@+id/imageView9"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="$"
-                    android:textAllCaps="false"
-                    android:textColor="@android:color/darker_gray"
-                    android:textSize="30sp"
-                    android:textStyle="bold"
-                    android:typeface="sans"
-                    app:fontFamily="serif" />
+                    app:srcCompat="@android:drawable/ic_menu_more" />
 
                 <EditText
                     android:id="@+id/edValor"
                     android:layout_width="285dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
+                    android:hint="R$"
                     android:inputType="numberDecimal" />
 
             </TableRow>

@@ -124,10 +124,10 @@ public class AddDespesa extends AppCompatActivity implements AdapterView.OnItemS
             //Criando despesa com valores inseridos por usuário
             DespesaModel despesa = new DespesaModel(0, dataStr, descricao, valor, 0, idFundo);
             //variável que guarda o Valor restante de determinado fundo
-            float valorRest = crud.getValorRestFundoId(idFundo);
+            float valorTotalFundo = crud.getValorFundoId(idFundo);
             //verifica se o valor da nova despesa somado ao valor de todas as outras despesas relacionadas ao mesmo fundo
             //uçtrapassam ao valor restante do fundo.
-            if (valor + valorAllRest <= valorRest) {
+            if (valor + valorAllRest <= valorTotalFundo) {
                 if (crud.insereGasto(despesa) == true) {
                     Snackbar.make(v, "Despesa Inserida", Snackbar.LENGTH_LONG).setAction("Action", null).show();
                     finish();

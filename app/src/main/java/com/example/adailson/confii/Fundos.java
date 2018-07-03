@@ -36,7 +36,6 @@ public class Fundos extends AppCompatActivity implements AdapterView.OnItemSelec
         Bundle dados = vrIntent.getExtras();
         //Lista sendo preenchida com despesas do mês atual/ Parâmetros vindos da tela principal
         recarregarTela(0, 0);
-
         //Objeto Spinner, preenchendo e métodos de seleção
         List<String> mesesNomes = new ArrayList();
         for (int i = 0; i < bd.getMesesFundos().size(); i++) {

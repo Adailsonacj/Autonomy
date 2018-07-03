@@ -68,8 +68,8 @@ public class ResumoDespesa extends AppCompatActivity {
         checked = ((CheckBox) v).isChecked();
         if (checked == true) {
             BancoController crud = new BancoController(getBaseContext(), "gasto", 1);
-            float valorEntra = crud.getValorFundoId(idFundo);
-            crud.setValorRest(idFundo, valorEntra - valor);
+            float valorRest = crud.getValorRestFundoId(idFundo);
+            crud.setValorRest(idFundo, valorRest - valor);
         }
     }
 
