@@ -22,7 +22,6 @@ public class ResumoFundo extends AppCompatActivity {
     private float valorEntraNovo;
     private float valorEntraAnti;
     private float valorRest;
-    private int idDespesa;
     private int idFundo;
     private EditText edDescricao;
     private TextView twData;
@@ -44,7 +43,6 @@ public class ResumoFundo extends AppCompatActivity {
         Intent vrIntent = getIntent();
         Bundle dados = vrIntent.getExtras();
 
-        idDespesa = dados.getInt("idDespesa");
         descricao = dados.getString("descricao");
         data = dados.getString("data");
         valorEntraAnti = dados.getFloat("valorEntra");
@@ -82,7 +80,7 @@ public class ResumoFundo extends AppCompatActivity {
 
     public void btnExcuir(View v) {
         BancoController crud = new BancoController(getBaseContext(), "gasto", 1);
-        crud.deleteDespesa(idDespesa);
+        crud.deletaFundo(idFundo);
         Intent it = new Intent(ResumoFundo.this, Fundos.class);
         startActivity(it);
         finish();

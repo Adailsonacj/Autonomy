@@ -104,6 +104,19 @@ public class BancoController {
         return meses;
     }
 
+    public boolean deletaFundo(int idFundo){
+        try {
+            db = banco.getWritableDatabase();
+            ContentValues contentValues = new ContentValues();
+            contentValues.put("id", idFundo);
+            db.delete("fundos", "id=" + idFundo + "", null);
+            db.close();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
     public boolean atualizaFundo(FundoModel fundo) {
         try {
             ContentValues contentValues = new ContentValues();
