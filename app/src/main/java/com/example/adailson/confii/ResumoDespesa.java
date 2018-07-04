@@ -6,20 +6,15 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.adailson.confii.daos.BancoController;
 import com.example.adailson.confii.model.DespesaModel;
-
-import java.util.ArrayList;
 
 public class ResumoDespesa extends AppCompatActivity {
 
@@ -31,6 +26,7 @@ public class ResumoDespesa extends AppCompatActivity {
     private float valorNovo;
     private float valorAnt;
     private int pg;
+    int idDespesa;
     private int idFundo;
     EditText edDescricao;
     TextView twData;
@@ -44,18 +40,21 @@ public class ResumoDespesa extends AppCompatActivity {
         edDescricao = (EditText) findViewById(R.id.edDescricao);
         twData = (TextView) findViewById(R.id.twData);
         edValor = (EditText) findViewById(R.id.edValor);
+        FloatingActionButton btnExcluir = (FloatingActionButton) findViewById(R.id.btnExcuir);
+        CheckBox cbPg = (CheckBox) findViewById(R.id.checkBox);
+        TableRow rowPg = (TableRow) findViewById(R.id.rowPg);
         Intent vrIntent = getIntent();
         Bundle dados = vrIntent.getExtras();
-        int id = dados.getInt("id");
+        idDespesa = dados.getInt("idDespesa");
         descricao = dados.getString("descricao");
         data = dados.getString("data");
         valorAnt = dados.getFloat("valor");
         pg = dados.getInt("pg");
         idFundo = dados.getInt("idFundo");
-        despesa = new DespesaModel(id, data, descricao, valorNovo, 0, idFundo);
-        CheckBox cbPg = (CheckBox) findViewById(R.id.checkBox);
-        TableRow rowPg = (TableRow) findViewById(R.id.rowPg);
+        despesa = new DespesaModel(idDespesa, data, descricao, valorNovo, 0, idFundo);
+
         if (pg == 1) {
+            btnExcluir.setClickable(false);
             edDescricao.setEnabled(false);
             edValor.setEnabled(false);
             rowPg.setBackgroundColor(Color.parseColor("#A9F5E1"));
@@ -86,16 +85,11 @@ public class ResumoDespesa extends AppCompatActivity {
             float valorTotalFundo = crud.getValorFundoId(idFundo);
             //verifica se o valor da nova despesa somado ao valor de todas as outras despesas relacionadas ao mesmo fundo
             //uçtrapassam ao valor restante do fundo.
-            if (valorNovo + allDespesasFundo - valorAnt<= valorTotalFundo) {
-
-
+            if (valorNovo + allDespesasFundo - valorAnt <= valorTotalFundo) {
                 if (checked == true) {
                     float valorRest = crud.getValorRestFundoId(idFundo);
                     crud.setValorRest(idFundo, valorRest - valorNovo);
                 }
-
-
-
                 //Método para editar Despesa.
                 descricao = edDescricao.getText().toString();
                 despesa.setDescricao(descricao);
@@ -107,10 +101,20 @@ public class ResumoDespesa extends AppCompatActivity {
                     Snackbar.make(v, "Houve um erro!", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
                 }
+                Intent it = new Intent(ResumoDespesa.this, Despesas.class);
+                startActivity(it);
                 finish();
             } else {
                 Snackbar.make(v, "O fundo não possui saldo sulficiente.", Snackbar.LENGTH_LONG).setAction("Action", null).show();
             }
         }
+    }
+
+    public void btnExcuir(View v) {
+        BancoController crud = new BancoController(getBaseContext(), "gasto", 1);
+        crud.deleteDespesa(idDespesa);
+        Intent it = new Intent(ResumoDespesa.this, Despesas.class);
+        startActivity(it);
+        finish();
     }
 }

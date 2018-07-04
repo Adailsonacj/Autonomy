@@ -43,7 +43,9 @@
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:orientation="vertical"
+            android:paddingTop="30dp"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             tools:context=".ResumoDespesa"
             tools:showIn="@layout/activity_resumo_despesa">
@@ -139,9 +141,25 @@
         android:id="@+id/btnEditar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@android:drawable/ic_menu_save"
+        android:layout_margin="10dp"
+        android:background="@color/colorPrimary"
         android:onClick="btnEditar"
+        android:padding="10dp"
+        android:textColor="@android:color/background_light"
         app:layout_anchor="@+id/nestedScrollView"
-        app:layout_anchorGravity="bottom|center" />
+        app:layout_anchorGravity="bottom|center"
+        tools:text="SALVAR" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/btnExcuir"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="btnExcuir"
+        android:layout_margin="10dp"
+        android:clickable="true"
+        app:backgroundTint="@android:color/holo_orange_dark"
+        app:layout_anchor="@+id/appbar"
+        app:layout_anchorGravity="left|bottom"
+        app:srcCompat="@android:drawable/ic_menu_delete" />
 
 </android.support.design.widget.CoordinatorLayout>

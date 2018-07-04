@@ -19,7 +19,7 @@ public class Principal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
 
-        //LinearLayout linearLayout = (LinearLayout) findViewById(R.id.linearLayout);
+        //LinearLayout linearLayout = (LinearLayout) findViewById(R.idDespesa.linearLayout);
         //Intent vrIntent = getIntent();
         //Bundle dados = vrIntent.getExtras();
         //if (dados.getInt("semfundo") == 1) {

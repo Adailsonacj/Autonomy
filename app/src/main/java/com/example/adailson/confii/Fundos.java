@@ -52,7 +52,7 @@ public class Fundos extends AppCompatActivity implements AdapterView.OnItemSelec
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 FundoModel ixFundo = fundosAdapter.getItem(i);
                 Intent it = new Intent(Fundos.this, ResumoDespesa.class);
-                vrDados.putInt("id", ixFundo.getId());
+                vrDados.putInt("idDespesa", ixFundo.getId());
                 vrDados.putString("descricao", ixFundo.getNome());
                 vrDados.putString("data", ixFundo.getData());
                 vrDados.putFloat("valor", ixFundo.getValorEntra());

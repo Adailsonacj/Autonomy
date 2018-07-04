@@ -215,6 +215,20 @@ public class BancoController {
         }
     }
 
+    public boolean deleteDespesa(int idDespesa) {
+
+        try {
+            db = banco.getWritableDatabase();
+            ContentValues contentValues = new ContentValues();
+            contentValues.put("id", idDespesa);
+            db.delete("gastos", "id=" + idDespesa + "", null);
+            db.close();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
     public ArrayList<DespesaModel> getGastos(int mes, int ano) {
         ArrayList<DespesaModel> despesas = new ArrayList<>();
 

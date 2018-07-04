@@ -55,7 +55,7 @@ public class Despesas extends Activity implements AdapterView.OnItemSelectedList
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 DespesaModel ixDespesa = despesasAdapter.getItem(i);
                 Intent it = new Intent(Despesas.this, ResumoDespesa.class);
-                vrDados.putInt("id", ixDespesa.getId());
+                vrDados.putInt("idDespesa", ixDespesa.getId());
                 vrDados.putString("descricao", ixDespesa.getDescricao());
                 vrDados.putString("data", ixDespesa.getData());
                 vrDados.putFloat("valor", ixDespesa.getValor());
