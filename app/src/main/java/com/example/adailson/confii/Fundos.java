@@ -42,8 +42,8 @@ public class Fundos extends AppCompatActivity implements AdapterView.OnItemSelec
             mesesNomes.add(bd.getMesesFundos().get(i).getNome());
         }
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, mesesNomes);
-        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter(this, R.layout.teste, mesesNomes);
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(arrayAdapter);
         spinner.setOnItemSelectedListener(this);
 
