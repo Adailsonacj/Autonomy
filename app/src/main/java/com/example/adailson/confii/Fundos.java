@@ -51,11 +51,12 @@ public class Fundos extends AppCompatActivity implements AdapterView.OnItemSelec
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 FundoModel ixFundo = fundosAdapter.getItem(i);
-                Intent it = new Intent(Fundos.this, ResumoDespesa.class);
-                vrDados.putInt("idDespesa", ixFundo.getId());
+                Intent it = new Intent(Fundos.this, ResumoFundo.class);
+                vrDados.putInt("idFundo", ixFundo.getId());
                 vrDados.putString("descricao", ixFundo.getNome());
                 vrDados.putString("data", ixFundo.getData());
-                vrDados.putFloat("valor", ixFundo.getValorEntra());
+                vrDados.putFloat("valorEntra", ixFundo.getValorEntra());
+                vrDados.putFloat("valorRest", ixFundo.getValorRest());
                 it.putExtras(vrDados);
                 startActivity(it);
                 finish();

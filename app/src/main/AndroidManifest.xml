@@ -24,7 +24,8 @@
             android:label="@string/title_activity_resumo_despesa"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Fundos" />
-        <activity android:name=".AddFundo"></activity>
+        <activity android:name=".AddFundo" />
+        <activity android:name=".ResumoFundo"></activity>
     </application>
 
 </manifest>

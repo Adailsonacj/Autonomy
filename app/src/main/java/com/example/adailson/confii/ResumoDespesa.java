@@ -16,9 +16,11 @@ import android.widget.TextView;
 import com.example.adailson.confii.daos.BancoController;
 import com.example.adailson.confii.model.DespesaModel;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+
 public class ResumoDespesa extends AppCompatActivity {
 
-    Bundle vrDados = new Bundle();
     private boolean checked;
     private DespesaModel despesa;
     private String descricao;
@@ -88,7 +90,11 @@ public class ResumoDespesa extends AppCompatActivity {
             if (valorNovo + allDespesasFundo - valorAnt <= valorTotalFundo) {
                 if (checked == true) {
                     float valorRest = crud.getValorRestFundoId(idFundo);
-                    crud.setValorRest(idFundo, valorRest - valorNovo);
+                    float valorNovoRest = valorRest - valorNovo;
+                    //Formata qualquer valor para apenas dos números após a vírgula
+                    NumberFormat formatarFloat = new DecimalFormat("#.##");
+                    float novoNumero2 = Float.parseFloat(formatarFloat.format(valorNovoRest).replace(",", "."));
+                    crud.setValorRest(idFundo, novoNumero2);
                 }
                 //Método para editar Despesa.
                 descricao = edDescricao.getText().toString();

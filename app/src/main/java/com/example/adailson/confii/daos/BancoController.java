@@ -104,6 +104,24 @@ public class BancoController {
         return meses;
     }
 
+    public boolean atualizaFundo(FundoModel fundo) {
+        try {
+            ContentValues contentValues = new ContentValues();
+            String where;
+            db = banco.getWritableDatabase();
+            where = "id=" + fundo.getId() + "";
+            contentValues.put("nome", fundo.getNome());
+            contentValues.put("valorEntra", fundo.getValorEntra());
+            contentValues.put("valorRest", fundo.getValorRest());
+
+            db.update("fundos", contentValues, where, null);
+            db.close();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
     public ArrayList<FundoModel> getFundos(int mes, int ano) {
         ArrayList<FundoModel> fundos = new ArrayList<>();
         try {
