@@ -7,24 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b0433152-575d-4bfe-b139-6ee0b6ce0662" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskHistory.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskJars.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskJars.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/adailson/confii/Despesas.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/adailson/confii/Despesas.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/adailson/confii/Fundos.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/adailson/confii/Fundos.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/adailson/confii/Principal.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/adailson/confii/Principal.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/adailson/confii/ResumoDespesa.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/adailson/confii/ResumoDespesa.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/adailson/confii/daos/BancoController.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/adailson/confii/daos/BancoController.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_resumo_despesa.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_resumo_despesa.xml" />
-      <change beforePath="$PROJECT_DIR$/local.properties" afterPath="$PROJECT_DIR$/local.properties" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -50,8 +33,8 @@
       <file leaf-file-name="ResumoDespesa.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/adailson/confii/ResumoDespesa.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-114">
-              <caret line="66" column="5" lean-forward="true" selection-start-line="66" selection-start-column="5" selection-end-line="66" selection-end-column="5" />
+            <state relative-caret-position="1547">
+              <caret line="107" column="59" lean-forward="false" selection-start-line="107" selection-start-column="59" selection-end-line="107" selection-end-column="59" />
               <folding />
             </state>
           </provider>
@@ -2133,8 +2116,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="200" />
-    <option name="y" value="11" />
+    <option name="x" value="317" />
+    <option name="y" value="160" />
     <option name="width" value="1464" />
     <option name="height" value="1047" />
   </component>
@@ -2601,8 +2584,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/adailson/confii/ResumoDespesa.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-114">
-          <caret line="66" column="5" lean-forward="true" selection-start-line="66" selection-start-column="5" selection-end-line="66" selection-end-column="5" />
+        <state relative-caret-position="1547">
+          <caret line="107" column="59" lean-forward="false" selection-start-line="107" selection-start-column="59" selection-end-line="107" selection-end-column="59" />
           <folding />
         </state>
       </provider>

@@ -111,10 +111,12 @@ public class ResumoDespesa extends AppCompatActivity {
     }
 
     public void btnExcuir(View v) {
-        BancoController crud = new BancoController(getBaseContext(), "gasto", 1);
-        crud.deleteDespesa(idDespesa);
-        Intent it = new Intent(ResumoDespesa.this, Despesas.class);
-        startActivity(it);
-        finish();
+        if (pg == 0) {
+            BancoController crud = new BancoController(getBaseContext(), "gasto", 1);
+            crud.deleteDespesa(idDespesa);
+            Intent it = new Intent(ResumoDespesa.this, Despesas.class);
+            startActivity(it);
+            finish();
+        }
     }
 }
