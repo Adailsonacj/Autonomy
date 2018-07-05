@@ -2,6 +2,8 @@ package com.example.adailson.confii;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -38,6 +40,7 @@ public class AddDespesa extends AppCompatActivity implements AdapterView.OnItemS
     Calendar myCalendar = Calendar.getInstance();
     DatePickerDialog.OnDateSetListener date;
 
+    @RequiresApi(api = Build.VERSION_CODES.HONEYCOMB)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -130,6 +133,8 @@ public class AddDespesa extends AppCompatActivity implements AdapterView.OnItemS
             if (valor + valorAllRest <= valorTotalFundo) {
                 if (crud.insereGasto(despesa) == true) {
                     Snackbar.make(v, "Despesa Inserida", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                    Intent vrintention = new Intent(this, Despesas.class);
+                    startActivity(vrintention);
                     finish();
                 } else {
                     Snackbar.make(v, "Houve um problema..", Snackbar.LENGTH_LONG).setAction("Action", null).show();
@@ -152,7 +157,7 @@ public class AddDespesa extends AppCompatActivity implements AdapterView.OnItemS
             listStrFundos.add(bd.getFundos(numMes, numAno).get(i).getNome());
         }
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, listStrFundos);
-        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerFundo.setAdapter(arrayAdapter);
         if (listStrFundos.size() >= 1) {
             return true;

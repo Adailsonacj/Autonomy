@@ -1,15 +1,16 @@
 package com.example.adailson.confii;
 
+import android.content.Intent;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.EditText;
 
 import com.example.adailson.confii.daos.BancoController;
-import com.example.adailson.confii.model.DespesaModel;
 import com.example.adailson.confii.model.FundoModel;
 
 import java.text.SimpleDateFormat;
@@ -24,6 +25,7 @@ public class AddFundo extends AppCompatActivity {
     private EditText inputValor;
     private String dataStr;
 
+    @RequiresApi(api = Build.VERSION_CODES.HONEYCOMB)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,7 +74,9 @@ public class AddFundo extends AppCompatActivity {
                 Snackbar.make(v, "Ocorreu um erro", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
-            //finish();
+            Intent it = new Intent(AddFundo.this, Fundos.class);
+            startActivity(it);
+            finish();
         }
     }
 
