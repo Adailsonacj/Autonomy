@@ -1,7 +1,7 @@
 package com.example.adailson.confii;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -11,14 +11,13 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.adailson.confii.daos.BancoController;
-import com.example.adailson.confii.model.DespesaModel;
 import com.example.adailson.confii.model.FundoModel;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class Fundos extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class Fundos extends Activity implements AdapterView.OnItemSelectedListener {
 
     Bundle vrDados = new Bundle();
     BancoController bd;
@@ -42,10 +41,16 @@ public class Fundos extends AppCompatActivity implements AdapterView.OnItemSelec
             mesesNomes.add(bd.getMesesFundos().get(i).getNome());
         }
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter(this, R.layout.teste, mesesNomes);
-        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(arrayAdapter);
-        spinner.setOnItemSelectedListener(this);
+        if(mesesNomes.size()!=0) {
+            ArrayAdapter<String> arrayAdapter = new ArrayAdapter(this, R.layout.teste, mesesNomes);
+            arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinner.setAdapter(arrayAdapter);
+            spinner.setOnItemSelectedListener(this);
+        }else{
+            spinner.setEnabled(false);
+            TextView twInfo = (TextView) findViewById(R.id.twInfo);
+            twInfo.setText("- Sem registros..");
+        }
 
         //Clique na célula
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

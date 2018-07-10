@@ -16,6 +16,8 @@ import com.example.adailson.confii.daos.BancoController;
 import com.example.adailson.confii.model.DespesaModel;
 import com.example.adailson.confii.model.MesModel;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -44,10 +46,16 @@ public class Despesas extends Activity implements AdapterView.OnItemSelectedList
             mesesNomes.add(bd.getMeses().get(i).getNome());
         }
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter(this, R.layout.teste, mesesNomes);
-        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(arrayAdapter);
-        spinner.setOnItemSelectedListener(this);
+        if(mesesNomes.size()!=0) {
+            ArrayAdapter<String> arrayAdapter = new ArrayAdapter(this, R.layout.teste, mesesNomes);
+            arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinner.setAdapter(arrayAdapter);
+            spinner.setOnItemSelectedListener(this);
+        }else{
+            spinner.setEnabled(false);
+            TextView twInfo = (TextView) findViewById(R.id.twInfo);
+            twInfo.setText("- Sem registros..");
+        }
 
 
         //ListView

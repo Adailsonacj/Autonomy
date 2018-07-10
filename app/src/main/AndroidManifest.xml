@@ -18,7 +18,6 @@
         </activity>
         <activity android:name=".AddDespesa" />
         <activity android:name=".Despesas" />
-        <activity android:name=".Meses" />
         <activity
             android:name=".ResumoDespesa"
             android:label="@string/title_activity_resumo_despesa"
