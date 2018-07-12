@@ -5,9 +5,11 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.LinearLayout;
+
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.example.adailson.confii.daos.BancoController;
 import com.example.adailson.confii.model.DespesaModel;
@@ -30,26 +32,27 @@ public class Principal extends AppCompatActivity {
 
         BancoController crud = new BancoController(getBaseContext(), "gasto", 1);
         Calendar calendar = Calendar.getInstance();
-        int mes = calendar.get(Calendar.MONTH) +1;
+        int mes = calendar.get(Calendar.MONTH) + 1;
         int ano = calendar.get(Calendar.YEAR);
-        ArrayList<FundoModel>  listaFundos = crud.getFundos(mes, ano);
+        ArrayList<FundoModel> listaFundos = crud.getFundos(mes, ano);
         float valorTotalFundos = 0;
-        for(int i =0; i<listaFundos.size(); i++){
+        for (int i = 0; i < listaFundos.size(); i++) {
             valorTotalFundos += listaFundos.get(i).getValorEntra();
         }
-        ArrayList<DespesaModel> listaDespesas= crud.getGastos(mes, ano);
+        ArrayList<DespesaModel> listaDespesas = crud.getGastos(mes, ano);
         float valorTotalDEspesas = 0;
-        for(int i=0; i< listaDespesas.size(); i++){
+        for (int i = 0; i < listaDespesas.size(); i++) {
             valorTotalDEspesas += listaDespesas.get(i).getValor();
         }
 
-        Float valorPorcentagem = valorTotalDEspesas*100/valorTotalFundos;
+        Float valorPorcentagem = valorTotalDEspesas * 100 / valorTotalFundos;
         int valorPorcentagemInt = valorPorcentagem.intValue();
 
         pb = (ProgressBar) findViewById(R.id.progressBar);
         pb.setProgress(valorPorcentagemInt);
 
-
+        TextView tvPorcent = (TextView) findViewById(R.id.tvPorcent);
+        tvPorcent.setText("Você já ultilizou " + valorPorcentagemInt + "% dos fundos cadastrados neste mês.");
 
         //LinearLayout linearLayout = (LinearLayout) findViewById(R.idDespesa.linearLayout);
         //Intent vrIntent = getIntent();
@@ -68,6 +71,19 @@ public class Principal extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_resumo_despesa, menu);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                Intent it = new Intent(Principal.this, Config.class);
+                startActivity(it);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     public void btnFundos(View v) {

@@ -24,7 +24,11 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Fundos" />
         <activity android:name=".AddFundo" />
-        <activity android:name=".ResumoFundo"></activity>
+        <activity android:name=".ResumoFundo" />
+        <activity android:name=".Config" />
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings"></activity>
     </application>
 
 </manifest>
