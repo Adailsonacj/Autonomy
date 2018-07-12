@@ -72,7 +72,7 @@
         android:onClick="btnAddDespesa"
         app:layout_anchor="@+id/constraintLayout"
         app:layout_anchorGravity="right|bottom"
-        app:srcCompat="@android:drawable/ic_menu_add" />
+        app:srcCompat="@android:drawable/ic_input_add" />
 
 
 </android.support.design.widget.CoordinatorLayout>

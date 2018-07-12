@@ -81,6 +81,10 @@ public class Principal extends AppCompatActivity {
                 Intent it = new Intent(Principal.this, Config.class);
                 startActivity(it);
                 return true;
+            case R.id.action_duplicarMes:
+                Intent it1 = new Intent(Principal.this, DuplicarMes.class);
+                startActivity(it1);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

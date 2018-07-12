@@ -11,7 +11,7 @@ public class Config extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_config);
     }
-    public void btnMudaCor(View v){
+    public void btnLimparBanco(View v){
 
     }
 }
