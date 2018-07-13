@@ -104,7 +104,7 @@ public class BancoController {
         return meses;
     }
 
-    public boolean deletaFundo(int idFundo){
+    public boolean deletaFundo(int idFundo) {
         try {
             db = banco.getWritableDatabase();
             ContentValues contentValues = new ContentValues();
@@ -344,5 +344,14 @@ public class BancoController {
         }
         db.close();
         return meses;
+    }
+
+    public boolean duplicarMes(int mesAnt, int anoAnt, int novoMes, int novoAno) {
+        ArrayList<FundoModel> fundos = getFundos(mesAnt, anoAnt);
+        for (int i = 0; i < fundos.size(); i++) {
+            //fundos.get(i).set
+            insereFundo(fundos.get(i));
+        }
+        return true;
     }
 }

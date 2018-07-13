@@ -28,11 +28,11 @@ public class ResumoDespesa extends AppCompatActivity {
     private float valorNovo;
     private float valorAnt;
     private int pg;
-    int idDespesa;
+    private int idDespesa;
     private int idFundo;
-    EditText edDescricao;
-    TextView twData;
-    EditText edValor;
+    private EditText edDescricao;
+    private TextView twData;
+    private EditText edValor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
