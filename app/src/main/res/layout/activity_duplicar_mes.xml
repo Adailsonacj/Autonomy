@@ -14,15 +14,15 @@
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Selecione o mês para Duplicar:"
+            android:layout_width="186dp"
+            android:layout_height="36dp"
+            android:text="Selecione um mês:"
             android:textSize="18sp" />
 
         <Spinner
-            android:id="@+id/spinner2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:id="@+id/spinnerMesAnt"
+            android:layout_width="64dp"
+            android:layout_height="47dp" />
     </TableRow>
 
     <TableRow
@@ -32,7 +32,7 @@
 
         <EditText
             android:id="@+id/setSelecMes"
-            android:layout_width="251dp"
+            android:layout_width="171dp"
             android:layout_height="match_parent"
             android:ems="10"
             android:focusable="false"

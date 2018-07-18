@@ -9,22 +9,25 @@
 
     <TableRow
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center">
+        android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/btnLimparBanco"
-            style="@style/Widget.AppCompat.Button.Colored"
+        <ImageView
+            android:id="@+id/imageView10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="btnLimparBanco"
-            android:text="Limpar Dados" />
+            app:srcCompat="@android:drawable/ic_dialog_info" />
+
+        <Button
+            android:id="@+id/btnMudaCor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="btnMudaCor"
+            android:text="Button" />
     </TableRow>
 
     <TableRow
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center">
+        android:layout_height="match_parent" >
 
         <ImageView
             android:id="@+id/imageView11"
@@ -34,7 +37,7 @@
 
         <Switch
             android:id="@+id/switch1"
-            android:layout_width="17dp"
-            android:layout_height="11dp" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
     </TableRow>
 </TableLayout>

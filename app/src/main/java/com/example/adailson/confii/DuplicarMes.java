@@ -4,12 +4,17 @@ import android.app.DatePickerDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 
+import com.example.adailson.confii.daos.BancoController;
 import com.example.adailson.confii.model.MesModel;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class DuplicarMes extends AppCompatActivity {
 
@@ -17,6 +22,9 @@ public class DuplicarMes extends AppCompatActivity {
     private DatePickerDialog.OnDateSetListener date;
     private EditText setSelecMes;
     private String mesForm = null;
+    private Spinner spinnerMesAnt;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +91,24 @@ public class DuplicarMes extends AppCompatActivity {
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
+
+
+
+
+        spinnerMesAnt = (Spinner) findViewById(R.id.spinnerMesAnt);
+        BancoController bd = new BancoController(getBaseContext(), "gasto", 1);
+        List<String> mesesNomes = new ArrayList();
+        for (int i = 0; i < bd.getMeses().size(); i++) {
+            mesesNomes.add(bd.getMeses().get(i).getNome());
+        }
+        //Objeto Spinner, preenchendo e métodos de seleção
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, mesesNomes);
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerMesAnt.setAdapter(arrayAdapter);
+
+
+
+
 
     }
 }

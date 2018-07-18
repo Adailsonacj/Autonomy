@@ -1,6 +1,7 @@
 package com.example.adailson.confii;
 
 import android.content.Intent;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -22,7 +23,7 @@ public class Principal extends AppCompatActivity {
 
     private static final int TIMER_RUNTIME = 1000;
     private ProgressBar pb;
-    private Bundle vrDados = new Bundle();
+    Bundle vrDados = new Bundle();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

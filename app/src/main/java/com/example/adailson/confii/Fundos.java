@@ -19,11 +19,11 @@ import java.util.List;
 
 public class Fundos extends Activity implements AdapterView.OnItemSelectedListener {
 
-    private Bundle vrDados = new Bundle();
-    private BancoController bd;
-    private ArrayList<FundoModel> lista;
-    private FundosAdapter fundosAdapter;
-    private ListView listView;
+    Bundle vrDados = new Bundle();
+    BancoController bd;
+    ArrayList<FundoModel> lista;
+    FundosAdapter fundosAdapter;
+    ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

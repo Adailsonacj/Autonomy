@@ -31,14 +31,14 @@ public class AddDespesa extends AppCompatActivity implements AdapterView.OnItemS
     private EditText inputDescricao;
     private EditText inputValor;
     private String dataStr;
-    private Bundle vrDados = new Bundle();
+    Bundle vrDados = new Bundle();
     private int numMes, numAno;
     private Button btnSalvar;
     private Spinner spinnerFundo;
-    private List<Integer> ListIdFundo;
+    List<Integer> ListIdFundo;
     private int idFundo;
-    private Calendar myCalendar = Calendar.getInstance();
-    private DatePickerDialog.OnDateSetListener date;
+    Calendar myCalendar = Calendar.getInstance();
+    DatePickerDialog.OnDateSetListener date;
 
     @RequiresApi(api = Build.VERSION_CODES.HONEYCOMB)
     @Override

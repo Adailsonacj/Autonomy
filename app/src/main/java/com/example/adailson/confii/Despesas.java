@@ -24,11 +24,11 @@ import java.util.List;
 
 public class Despesas extends Activity implements AdapterView.OnItemSelectedListener {
 
-    private Bundle vrDados = new Bundle();
-    private BancoController bd;
-    private ArrayList<DespesaModel> lista;
-    private DespesasAdapter despesasAdapter;
-    private ListView listView;
+    Bundle vrDados = new Bundle();
+    BancoController bd;
+    ArrayList<DespesaModel> lista;
+    DespesasAdapter despesasAdapter;
+    ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
