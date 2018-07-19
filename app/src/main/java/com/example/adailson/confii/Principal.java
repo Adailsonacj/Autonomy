@@ -18,7 +18,6 @@ import com.example.adailson.confii.model.FundoModel;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-
 public class Principal extends AppCompatActivity {
 
     private static final int TIMER_RUNTIME = 1000;
@@ -30,15 +29,61 @@ public class Principal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
 
+        TextView tvMesAno = (TextView) findViewById(R.id.tvMesAno);
+
         BancoController crud = new BancoController(getBaseContext(), "gasto", 1);
-        Calendar calendar = Calendar.getInstance();
-        int mes = calendar.get(Calendar.MONTH) + 1;
-        int ano = calendar.get(Calendar.YEAR);
+        Calendar c = Calendar.getInstance();
+        int mes = c.get(Calendar.MONTH) + 1;
+        int ano = c.get(Calendar.YEAR);
+
+        //Formatando o nome do mês e ano mostrados na tela
+        String mesForm = null;
+        if (c.get(Calendar.MONTH) == 1) {
+            mesForm = "Janeiro/" + c.get(Calendar.YEAR);
+        }
+        if (c.get(Calendar.MONTH) == 2) {
+            mesForm = "Fevereiro/" + c.get(Calendar.YEAR);
+        }
+        if (c.get(Calendar.MONTH) == 3) {
+            mesForm = "Março/" + c.get(Calendar.YEAR);
+        }
+        if (c.get(Calendar.MONTH) == 4) {
+            mesForm = "Abril/" + c.get(Calendar.YEAR);
+        }
+        if (c.get(Calendar.MONTH) == 5) {
+            mesForm = "Maio/" + c.get(Calendar.YEAR);
+        }
+        if (c.get(Calendar.MONTH) == 6) {
+            mesForm = "Junho/" + c.get(Calendar.YEAR);
+        }
+        if (c.get(Calendar.MONTH) == 7) {
+            mesForm = "Julho/" + c.get(Calendar.YEAR);
+        }
+        if (c.get(Calendar.MONTH) == 8) {
+            mesForm = "Agosto/" + c.get(Calendar.YEAR);
+        }
+        if (c.get(Calendar.MONTH) == 9) {
+            mesForm = "Setembro/" + c.get(Calendar.YEAR);
+        }
+        if (c.get(Calendar.MONTH) == 10) {
+            mesForm = "Outubro/" + c.get(Calendar.YEAR);
+        }
+        if (c.get(Calendar.MONTH) == 11) {
+            mesForm = "Novembro/" + c.get(Calendar.YEAR);
+        }
+        if (c.get(Calendar.MONTH) == 12) {
+            mesForm = "Dezembro/" + c.get(Calendar.YEAR);
+        }
+
+        tvMesAno.setText(mesForm);
+
+        //Recebendo os fundos de determinado mes para mandar informação para ProgressBar
         ArrayList<FundoModel> listaFundos = crud.getFundos(mes, ano);
         float valorTotalFundos = 0;
         for (int i = 0; i < listaFundos.size(); i++) {
             valorTotalFundos += listaFundos.get(i).getValorEntra();
         }
+        //Recebendo despesas de determinado mes para comparar no ProgressBar
         ArrayList<DespesaModel> listaDespesas = crud.getGastos(mes, ano);
         float valorTotalDEspesas = 0;
         for (int i = 0; i < listaDespesas.size(); i++) {
@@ -46,6 +91,7 @@ public class Principal extends AppCompatActivity {
         }
 
         Float valorPorcentagem = valorTotalDEspesas * 100 / valorTotalFundos;
+        //Transformando o valor para inteiro (Aceitável como parâmetro do ProgressBar)
         int valorPorcentagemInt = valorPorcentagem.intValue();
 
         pb = (ProgressBar) findViewById(R.id.progressBar);
@@ -53,18 +99,6 @@ public class Principal extends AppCompatActivity {
 
         TextView tvPorcent = (TextView) findViewById(R.id.tvPorcent);
         tvPorcent.setText("Você já ultilizou " + valorPorcentagemInt + "% dos fundos cadastrados neste mês.");
-
-        //LinearLayout linearLayout = (LinearLayout) findViewById(R.idDespesa.linearLayout);
-        //Intent vrIntent = getIntent();
-        //Bundle dados = vrIntent.getExtras();
-        //if (dados.getInt("semfundo") == 1) {
-
-
-        //   Snackbar.make( linearLayout ,"Seu texto aqui!",Snackbar.LENGTH_LONG).setAction("Action", null).show();
-        //Snackbar.make(Principal.this, "Adicione primeiro um fundo ao mês selecionado", Snackbar.LENGTH_LONG).setAction("Action", null).show();
-
-        //}
-
     }
 
     @Override
