@@ -5,4 +5,4 @@ O cálculo de todas as despesas mensais é feito peça aplicação automaticamen
 e subtraído esse valor do `fundo` desejado pelo usuário.
 
 
-<img width="880" alt="git-integration" src="https://user-images.githubusercontent.com/378023/42010937-0961e420-7acc-11e8-9aaa-417514317206.png">
+<img width="880" alt="git-integration" src="https://1.bp.blogspot.com/-LZ4kp6bEqZI/W22ZPsFEGhI/AAAAAAAANVg/tRqk_LQ3djoHIy_lNH5wEgd362AaNOgCQCLcBGAs/s1600/20180810_104830_0001.png">
